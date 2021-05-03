@@ -1,10 +1,11 @@
-import Testt from './components/Testt/Testt';
+import { Route, Switch } from 'react-router';
+import MainPage from './pages/main/Main';
 
 const App = () => {
 	return (
-		<div>
-			<Testt />
-		</div>
+		<Switch>
+			<Route exact path='/' component={MainPage} />
+		</Switch>
 	);
 };
 
