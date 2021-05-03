@@ -8,8 +8,17 @@
 
 @font-face {
 	font-family: 'Montserrat';
-	src: url('./assets/fonts/Montserrat-Black.ttf') format('truetype');
+	src: url('./assets/fonts/Montserrat-Black.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-Bold.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-ExtraBold.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-ExtraLight.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-Light.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-Medium.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-Regular.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-Thin.ttf') format('truetype'),
+		url('./assets/fonts/Montserrat-SemiBold.ttf') format('truetype'),;
 	font-style: normal;
+	font-weight: 100 300 400 500 600 700 800 900;
 }
 
 /* @font-face {
@@ -28,7 +37,7 @@ body {
 	margin: 0;
 	font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
 		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-	font-weight: 300;
+	font-weight: 900;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
