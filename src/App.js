@@ -1,7 +1,11 @@
-import './App.css';
+import Testt from './components/Testt/Testt';
 
-function App() {
-	return <div className='App'>Hello!</div>;
-}
+const App = () => {
+	return (
+		<div>
+			<Testt />
+		</div>
+	);
+};
 
 export default App;
