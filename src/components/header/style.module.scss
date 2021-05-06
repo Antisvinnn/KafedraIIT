@@ -1,4 +1,14 @@
+$mainBlueColor: #2091ff;
+$addBlueColor: #0a59a6;
+$mainOrangeColor: #ff5c0e;
+$addOrangeColor: #a63905;
+
 .main {
+	font-family: 'Montserrat-SemiBold';
+	background-color: black;
+}
+
+.container {
 	max-width: 1200px;
 	height: 60px;
 	margin: 0 auto;
@@ -15,18 +25,34 @@
 .navLink {
 	margin: 0 20px;
 	text-decoration: none;
-	color: rgb(206, 206, 29);
-	font-weight: 400;
+	color: $mainBlueColor;
+	font-weight: 300;
+}
+
+.navLinkTeachers {
+	color: $mainOrangeColor;
 }
 
 .navLink::after {
 	display: block;
 	content: '';
 	height: 2px;
-	background-color: rgb(206, 206, 29);
+	background-color: $mainBlueColor;
 	margin-top: 5px;
 	width: 0%;
-	transition: 0.5s cubic-bezier(.41,.68,.58,-0.79);
+	transition: 0.6s cubic-bezier(0, 0.44, 0.39, 1.01);
+}
+
+.navLinkTeachers::after {
+	background-color: $mainOrangeColor;
+}
+
+.navLink:hover {
+	color: $addBlueColor;
+}
+
+.navLinkTeachers:hover {
+	color: $addOrangeColor;
 }
 
 .navLink:hover::after {
@@ -34,5 +60,16 @@
 }
 
 .logo {
-	color: rgb(206, 206, 29);
+	color: $mainOrangeColor;
+	margin-left: 20px;
+	border: 2px solid $mainOrangeColor;
+	padding: 10px 16px;
+	transition: 0.8s cubic-bezier(0, 0.44, 0.39, 1.01);
+}
+
+.logo:hover {
+	cursor: pointer;
+	color: $mainBlueColor;
+	border-color: $mainBlueColor;
+	transition: 0.8s cubic-bezier(0, 0.44, 0.39, 1.01);
 }

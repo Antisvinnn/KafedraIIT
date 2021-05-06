@@ -1,4 +1,14 @@
-@mixin defaultBlackText {
-	color: black;
-	background-color: red;
+$mainBlueColor: #2091ff;
+$addBlueColor: #0a59a6;
+$mainOrangeColor: #ff5c0e;
+$addOrangeColor: #a63905;
+
+@mixin titleText {
+	color: $mainBlueColor;
+	font-size: 26px;
+	font-family: 'Montserrat-Black';
+}
+
+@mixin primaryButton {
+	background-color: $mainRedColor;
 }
