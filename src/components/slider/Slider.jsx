@@ -1,6 +1,7 @@
 import { Carousel } from 'antd';
 import dark4 from '../../assets/images/dark4.jpg';
 import present1 from '../../assets/images/present2.png';
+import present7 from '../../assets/images/present7.jpg';
 import style from './style.module.scss';
 
 const Slider = () => {
@@ -13,7 +14,7 @@ const Slider = () => {
 				<img className={style.image} src={present1} alt='' />
 			</div>
 			<div>
-				<img className={style.image} src='http://placehold.it/1920x1080' alt='' />
+				<img className={style.image} src={present7} alt='' />
 			</div>
 		</Carousel>
 	);

@@ -1,5 +1,7 @@
-import style from './style.module.scss';
 import Slider from '../../components/slider/Slider';
+
+import { Parallax } from 'react-parallax';
+
 import monitor from '../../assets/images/monitor.png';
 import ai from '../../assets/images/ai.png';
 import internet from '../../assets/images/internet.png';
@@ -9,6 +11,10 @@ import design from '../../assets/images/design.png';
 import solution from '../../assets/images/solution.png';
 import processor from '../../assets/images/processor.png';
 import evm from '../../assets/images/evm.png';
+import bstu from '../../assets/images/bstu.jpg';
+
+import style from './style.module.scss';
+import { Button } from 'antd';
 
 const Main = () => {
 	return (
@@ -75,6 +81,17 @@ const Main = () => {
 						</div>
 					</div>
 				</section>
+			</div>
+			<div className={style.containerToParallax}>
+				<div className={style.parallax}>
+					<Parallax bgImage={bstu} strength={380}>
+						<div className={style.textParallaxWrapper}>
+							<Button className={style.parallaxButton} type='primary'>
+								Наша история
+							</Button>
+						</div>
+					</Parallax>
+				</div>
 			</div>
 		</div>
 	);
