@@ -2,17 +2,16 @@ import Slider from '../../components/slider/Slider';
 
 import { Parallax } from 'react-parallax';
 
-import monitor from '../../assets/images/monitor.png';
-import ttt from '@assets/images/monitor.png';
-import ai from '../../assets/images/ai.png';
-import internet from '../../assets/images/internet.png';
-import algo from '../../assets/images/algo.png';
-import programming from '../../assets/images/programming.png';
-import design from '../../assets/images/design.png';
-import solution from '../../assets/images/solution.png';
-import processor from '../../assets/images/processor.png';
-import evm from '../../assets/images/evm.png';
-import bstu from '../../assets/images/bstu.jpg';
+import monitor from '@assets/images/monitor.png';
+import ai from '@assets/images/ai.png';
+import internet from '@assets/images/internet.png';
+import algo from '@assets/images/algo.png';
+import programming from '@assets/images/programming.png';
+import design from '@assets/images/design.png';
+import solution from '@assets/images/solution.png';
+import processor from '@assets/images/processor.png';
+import evm from '@assets/images/evm.png';
+import bstu from '@assets/images/bstu.jpg';
 
 import style from './style.module.scss';
 import { Button } from 'antd';
@@ -43,7 +42,7 @@ const Main = () => {
 					<div className={style.title}>Чему учят на нашей кафедре:</div>
 					<div className={style.tasks}>
 						<div className={style.task}>
-							<img className={style.taskImage} src={ttt} alt='' />
+							<img className={style.taskImage} src={monitor} alt='' />
 							<div className={style.taskDescription}>Созданию доступных интерфейсов</div>
 						</div>
 						<div className={style.task}>

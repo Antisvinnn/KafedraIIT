@@ -1,5 +1,5 @@
-import StuffItem from '../../components/stuffItem/StuffItem';
-import ava from '../../assets/images/dark3.jpg';
+import StuffItem from '@components/stuffItem/StuffItem';
+import ava from '@assets/images/dark3.jpg';
 
 import style from './style.module.scss';
 

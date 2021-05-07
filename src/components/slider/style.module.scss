@@ -8,6 +8,10 @@ $addOrangeColor: #a63905;
 	height: 900px;
 }
 
+.slider > ul > li > button {
+	height: 12px !important;
+}
+
 .slide1 {
 	background: url('../../assets/images/dark4.jpg') center no-repeat;
 	background-size: cover;
@@ -37,11 +41,12 @@ $addOrangeColor: #a63905;
 }
 
 .slide2 {
-	background: url('../../assets/images/background1.png') center no-repeat;
+	background: url('../../assets/images/jobs4.jpg') center no-repeat;
 	background-size: cover;
 	height: 900px;
 	width: 100%;
 	display: flex !important;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -50,14 +55,26 @@ $addOrangeColor: #a63905;
 	color: #fff;
 	margin: 0;
 	text-align: center;
+	font-size: 50px;
+	text-shadow: 1px 1px 22px black;
+}
+
+.silde2Subtitle {
+	color: #fff;
+	margin: 0;
+	text-align: center;
+	font-size: 30px;
+	text-shadow: 1px 1px 22px black;
+	color: $mainOrangeColor;
 }
 
 .slide3 {
-	background: url('../../assets/images/dark4.jpg') center no-repeat;
+	background: url('../../assets/images/natan2.jpg') center no-repeat;
 	background-size: cover;
 	height: 900px;
 	width: 100%;
 	display: flex !important;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -66,4 +83,15 @@ $addOrangeColor: #a63905;
 	color: #fff;
 	margin: 0;
 	text-align: center;
+	font-size: 50px;
+	text-shadow: 1px 1px 22px black;
+}
+
+.silde3Subtitle {
+	color: #fff;
+	margin: 0;
+	text-align: center;
+	font-size: 30px;
+	text-shadow: 1px 1px 22px black;
+	color: $mainOrangeColor;
 }
