@@ -54,3 +54,24 @@ $addOrangeColor: #a63905;
 	width: 10%;
 	margin-top: 15px;
 }
+
+.footer {
+	width: 100%;
+	background-color: black;
+	color: $mainBlueColor;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 170px;
+	padding: 20px;
+}
+
+.leftContentText {
+	padding-top: 15px;
+	border-top: 1px solid $mainOrangeColor;
+}
+
+.rightContentText {
+	padding-top: 15px;
+	border-top: 1px solid $mainOrangeColor;
+}
