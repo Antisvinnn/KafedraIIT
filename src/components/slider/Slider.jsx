@@ -6,9 +6,10 @@ import style from './style.module.scss';
 
 const Slider = () => {
 	return (
-		<Carousel autoplay className={style.slider}>
-			<div classname={style.slide1}>
-				<img className={style.image} src={dark4} alt='' />
+		<Carousel className={style.slider}>
+			<div className={style.slide1}>
+				<h1 className={style.silde1Text}>Content</h1>
+				{/* <img className={style.image} src={dark4} alt='' /> */}
 			</div>
 			<div>
 				<img className={style.image} src={present1} alt='' />
