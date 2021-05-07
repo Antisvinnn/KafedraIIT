@@ -48,7 +48,7 @@ const Main = () => {
 						<div className={style.task}>
 							<img className={style.taskImage} src={ai} alt='' />
 							<div className={style.taskDescription}>
-								Программирование искусственного интеллекта
+								Программированию искусственного интеллекта
 							</div>
 						</div>
 						<div className={style.task}>

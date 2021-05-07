@@ -1,5 +1,4 @@
 import { Carousel } from 'antd';
-import dark4 from '../../assets/images/dark4.jpg';
 import present1 from '../../assets/images/present2.png';
 import present7 from '../../assets/images/present7.jpg';
 import style from './style.module.scss';

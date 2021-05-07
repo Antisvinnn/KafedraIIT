@@ -1,0 +1,33 @@
+$mainBlueColor: #2091ff;
+$addBlueColor: #0a59a6;
+$mainOrangeColor: #ff5c0e;
+$addOrangeColor: #a63905;
+
+.main {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.image {
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+}
+
+.description {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	align-items: flex-start;
+	margin-left: 60px;
+}
+
+.name {
+	font-family: 'Montserrat-Black';
+	font-size: 25px;
+	color: $addBlueColor;
+}
