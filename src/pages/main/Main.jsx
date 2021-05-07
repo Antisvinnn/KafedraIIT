@@ -3,6 +3,7 @@ import Slider from '../../components/slider/Slider';
 import { Parallax } from 'react-parallax';
 
 import monitor from '../../assets/images/monitor.png';
+import ttt from '@assets/images/monitor.png';
 import ai from '../../assets/images/ai.png';
 import internet from '../../assets/images/internet.png';
 import algo from '../../assets/images/algo.png';
@@ -42,7 +43,7 @@ const Main = () => {
 					<div className={style.title}>Чему учят на нашей кафедре:</div>
 					<div className={style.tasks}>
 						<div className={style.task}>
-							<img className={style.taskImage} src={monitor} alt='' />
+							<img className={style.taskImage} src={ttt} alt='' />
 							<div className={style.taskDescription}>Созданию доступных интерфейсов</div>
 						</div>
 						<div className={style.task}>
