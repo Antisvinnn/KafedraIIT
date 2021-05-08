@@ -1,9 +1,17 @@
 import StuffItem from '@components/stuffItem/StuffItem';
 import ava from '@assets/images/dark3.jpg';
+import arrow from '@assets/images/arrow.png';
+import { BackTop } from 'antd';
 
 import style from './style.module.scss';
 
 const Stuff = () => {
+	const styleBackTop = {
+		height: 90,
+		width: 60,
+		lineHeight: '40px',
+		bottom: '-40px',
+	};
 	return (
 		<div className={style.main}>
 			<div className={style.container}>
@@ -86,6 +94,9 @@ const Stuff = () => {
 					</div>
 				</div>
 			</footer>
+			<BackTop className={style.backTop}>
+				<img style={styleBackTop} src={arrow} alt='img' />
+			</BackTop>
 		</div>
 	);
 };

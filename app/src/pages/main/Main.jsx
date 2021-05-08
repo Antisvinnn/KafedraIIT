@@ -23,11 +23,6 @@ const Main = () => {
 		width: 60,
 		lineHeight: '40px',
 		bottom: '-40px',
-		// borderRadius: 4,
-		// backgroundColor: '#1088e9',
-		// color: '#fff',
-		// textAlign: 'center',
-		// fontSize: 14,
 	};
 	return (
 		<div className={style.main}>
