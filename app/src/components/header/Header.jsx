@@ -20,9 +20,6 @@ const Header = () => {
 					<Link to='/stuff' className={style.navLink}>
 						состав
 					</Link>
-					<Link to='/history' className={style.navLink}>
-						история
-					</Link>
 					<Link to='/contacts' className={style.navLink}>
 						контакты
 					</Link>

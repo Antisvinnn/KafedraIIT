@@ -12,11 +12,23 @@ import solution from '@assets/images/solution.png';
 import processor from '@assets/images/processor.png';
 import evm from '@assets/images/evm.png';
 import bstu from '@assets/images/bstu.jpg';
+import arrow from '@assets/images/arrow.png';
 
 import style from './style.module.scss';
-import { Button } from 'antd';
+import { Button, BackTop } from 'antd';
 
 const Main = () => {
+	const styleBackTop = {
+		height: 90,
+		width: 60,
+		lineHeight: '40px',
+		bottom: '-40px',
+		// borderRadius: 4,
+		// backgroundColor: '#1088e9',
+		// color: '#fff',
+		// textAlign: 'center',
+		// fontSize: 14,
+	};
 	return (
 		<div className={style.main}>
 			<Slider />
@@ -108,6 +120,9 @@ const Main = () => {
 					</div>
 				</div>
 			</footer>
+			<BackTop className={style.backTop}>
+				<img style={styleBackTop} src={arrow} alt='img' />
+			</BackTop>
 		</div>
 	);
 };
