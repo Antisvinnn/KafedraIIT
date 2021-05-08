@@ -93,7 +93,7 @@ $addOrangeColor: #a63905;
 .containerToParallax {
 	width: 100%;
 	margin: 0 auto;
-	background-color: $addBlueColor;
+	background: linear-gradient(#143250, $addBlueColor, #4174a7);
 }
 
 .parallax {
