@@ -2,3 +2,17 @@ $mainBlueColor: #2091ff;
 $addBlueColor: #0a59a6;
 $mainOrangeColor: #ff5c0e;
 $addOrangeColor: #a63905;
+
+.main {
+	width: 100%;
+	max-width: 1200px;
+	margin: 7px auto;
+}
+
+.sitePageHeader > div > div > span {
+	color: $mainBlueColor;
+}
+
+.sitePageHeader > div > div > span + span {
+	color: black;
+}
