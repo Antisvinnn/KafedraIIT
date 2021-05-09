@@ -46,7 +46,7 @@ const Stuff = () => {
 						img={ava}
 						name='Михняев В.С.'
 						subtitle='Доцент, кандидат наук, чемпион мира, чемп, просто лучший'
-						id='1'
+						id='2'
 					/>
 					<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
 					<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' />
@@ -54,13 +54,13 @@ const Stuff = () => {
 						img={ava}
 						name='Безобразов А.С.'
 						subtitle='Доцент, кандидат наук'
-						id='1'
+						id='3'
 					/>
 					<StuffItem
 						img={ava}
 						name='Михняев В.С.'
 						subtitle='Доцент, кандидат наук, чемпион мира, чемп, просто лучший'
-						id='1'
+						id='4'
 					/>
 					<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
 					<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' />
@@ -68,7 +68,7 @@ const Stuff = () => {
 						img={ava}
 						name='Безобразов А.С.'
 						subtitle='Доцент, кандидат наук'
-						id='1'
+						id='5'
 					/>
 					<StuffItem
 						img={ava}
