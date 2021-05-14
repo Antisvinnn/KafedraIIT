@@ -6,6 +6,7 @@ module.exports = function override(config) {
 		'@assets': 'src/assets',
 		'@pages': 'src/pages',
 		'@redux': 'src/redux',
+		'@helper': 'src/helper',
 		'@variables': 'src/variables',
 		'@helpers': 'src/helpers',
 	})(config);

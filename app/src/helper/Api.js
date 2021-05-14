@@ -1,5 +1,5 @@
 import axios from './axios';
-import AuthService from '../services/AuthService';
+import AuthService from '@redux/services/AuthService';
 
 const api = async (url, method = 'GET', data) => {
 	var time = parseInt(new Date().getTime() / 1000);

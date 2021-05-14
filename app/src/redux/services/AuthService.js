@@ -1,4 +1,4 @@
-import auth from '../helper/auth';
+import auth from '@helper/auth';
 
 class AuthService {
 	login(data) {

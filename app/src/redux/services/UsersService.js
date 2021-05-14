@@ -1,4 +1,4 @@
-import api from '../helper/api';
+import api from '@helper/api';
 
 class UserService {
 	whoAmI() {

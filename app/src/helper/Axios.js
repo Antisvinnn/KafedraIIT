@@ -1,6 +1,6 @@
 import axios from 'axios';
-import store from '../redux/store/store';
-import { logout } from '../redux/actions/auth';
+import store from '@redux/store/store';
+import { logout } from '@redux/actions/Auth';
 
 process.env.REACT_APP_ENV === 'production'
 	? (axios.defaults.baseURL = 'http://185.66.71.54:8001/api/')
