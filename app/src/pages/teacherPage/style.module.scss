@@ -62,15 +62,29 @@ $addOrangeColor: #a63905;
 
 .form {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
+	margin: 0;
 }
 
 .input {
 	width: 100%;
 	margin-right: 25px;
+	margin-bottom: 0;
 }
 
 .upload {
 	width: 100%;
+}
+
+.uplButton {
+	margin-top: 10px;
+}
+
+.applyButton {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.underInput {
+	display: flex;
+	flex-direction: row;
 }

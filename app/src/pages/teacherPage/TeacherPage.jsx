@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-import { PageHeader, Divider, Input, Upload, Button } from 'antd';
+import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
@@ -31,13 +31,23 @@ const TeacherPage = (props) => {
 		);
 	};
 	const config = {
-		action: 'https://google.com',
+		action: 'localhost:8020',
 		onChange({ file, fileList }) {
 			if (file.status !== 'uploading') {
-				console.log(file, fileList);
+				// console.log(file, fileList);
 			}
 		},
-		response: 'hz',
+	};
+	const dummyRequest = ({ file, onSuccess }) => {
+		setTimeout(() => {
+			onSuccess('ok');
+		}, 0);
+	};
+	let getInfo = (values) => {
+		console.log(values);
+		if (values.input && values.upload !== undefined) {
+			message.success('Файлы и описание опубликованы!');
+		}
 	};
 	return (
 		<div className={style.main}>
@@ -67,17 +77,30 @@ const TeacherPage = (props) => {
 			{testBool ? (
 				<React.Fragment>
 					<Divider plain>Панель навигации</Divider>
-					<Form className={style.form}>
-						<FormItem className={style.input}>
+					<Form className={style.form} onFinish={getInfo}>
+						<FormItem name='input' className={style.input}>
 							<Input placeholder='Добавьте описание'></Input>
 						</FormItem>
-						<FormItem>
-							<Upload {...config} className={style.upload}>
-								<Button type='primary' icon={<UploadOutlined />}>
-									Загрузить файл
+						<div className={style.underInput}>
+							<FormItem>
+								<Button className={style.applyButton} type='primary' htmlType='submit'>
+									Отправить
 								</Button>
-							</Upload>
-						</FormItem>
+							</FormItem>
+							<FormItem name='upload'>
+								<Upload
+									{...config}
+									className={style.upload}
+									maxCount='5'
+									multiple
+									customRequest={dummyRequest}
+								>
+									<Button className={style.uplButton} type='default' icon={<UploadOutlined />}>
+										Загрузить файл
+									</Button>
+								</Upload>
+							</FormItem>
+						</div>
 					</Form>
 				</React.Fragment>
 			) : null}

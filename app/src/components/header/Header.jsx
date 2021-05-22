@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import style from './style.module.scss';
 
 const Header = () => {
-	let testBool = true;
+	let testBool = false;
 	const menu = (
 		<Menu>
 			<Menu.Item danger>Выйти из аккаунта</Menu.Item>
