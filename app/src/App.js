@@ -1,11 +1,11 @@
 import { Route, Switch } from 'react-router-dom';
 
-import Header from './components/header/Header';
+import Header from '@components/header/Header';
 
-import MainPage from './pages/main/Main';
-import Stuff from './pages/stuff/Stuff';
-import TeacherPage from '@components/teacherPage/TeacherPage';
-import Page404 from './pages/page404/Page404';
+import MainPage from '@pages/main/Main';
+import Stuff from '@pages/stuff/Stuff';
+import TeacherPage from '@pages/teacherPage/TeacherPage';
+import Page404 from '@pages/page404/Page404';
 
 const App = () => {
 	return (

@@ -1,8 +1,13 @@
+import React from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-import { PageHeader, Divider } from 'antd';
+import { PageHeader, Divider, Input, Upload, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+import Form from 'antd/lib/form/Form';
+import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
 
-const TeacherPage = () => {
+const TeacherPage = (props) => {
+	let testBool = true;
 	const { id } = useParams();
 	const history = useHistory();
 	const routes = [
@@ -24,6 +29,15 @@ const TeacherPage = () => {
 				{route.breadcrumbName}
 			</Link>
 		);
+	};
+	const config = {
+		action: 'https://google.com',
+		onChange({ file, fileList }) {
+			if (file.status !== 'uploading') {
+				console.log(file, fileList);
+			}
+		},
+		response: 'hz',
 	};
 	return (
 		<div className={style.main}>
@@ -50,6 +64,24 @@ const TeacherPage = () => {
 					</div>
 				</div>
 			</div>
+			{testBool ? (
+				<React.Fragment>
+					<Divider plain>Панель навигации</Divider>
+					<Form className={style.form}>
+						<FormItem className={style.input}>
+							<Input placeholder='Добавьте описание'></Input>
+						</FormItem>
+						<FormItem>
+							<Upload {...config} className={style.upload}>
+								<Button type='primary' icon={<UploadOutlined />}>
+									Загрузить файл
+								</Button>
+							</Upload>
+						</FormItem>
+					</Form>
+				</React.Fragment>
+			) : null}
+
 			<Divider plain>Публикации преподавателя</Divider>
 			<div>123</div>
 		</div>

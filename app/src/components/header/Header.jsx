@@ -1,7 +1,16 @@
+import React from 'react';
+import { Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import style from './style.module.scss';
 
 const Header = () => {
+	let testBool = true;
+	const menu = (
+		<Menu>
+			<Menu.Item danger>Выйти из аккаунта</Menu.Item>
+		</Menu>
+	);
 	return (
 		<div className={style.main}>
 			<div className={style.container}>
@@ -23,9 +32,20 @@ const Header = () => {
 					<Link to='/contacts' className={style.navLink}>
 						контакты
 					</Link>
-					<Link to='/login' className={style.navLink + ' ' + style.navLinkTeachers}>
-						| вход для преподавателей
-					</Link>
+					{testBool ? (
+						<Dropdown overlay={menu} placement='topCenter'>
+							<Link
+								className={style.navLink + ' ' + style.navLinkTeachers}
+								onClick={(e) => e.preventDefault()}
+							>
+								| личный кабинет <DownOutlined />
+							</Link>
+						</Dropdown>
+					) : (
+						<Link to='/login' className={style.navLink + ' ' + style.navLinkTeachers}>
+							| вход для преподавателей
+						</Link>
+					)}
 				</nav>
 			</div>
 		</div>
