@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import photoTest from '@assets/images/ai.png';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
@@ -60,7 +61,7 @@ const TeacherPage = (props) => {
 			/>
 			<div className={style.container}>
 				<div className={style.teacherDataContainer}>
-					<img className={style.image} src='http://placehold.it/400x400' alt='' />
+					<img className={style.image} src={photoTest} alt='' />
 					<div className={style.teacherDescription}>
 						<span className={style.name}>Смаль Александр Сергеевич</span>
 						<span className={style.rewards}>
