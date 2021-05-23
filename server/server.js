@@ -1,4 +1,5 @@
 import sequelize from "./db/config/connect.mjs";
+import { create } from "./services/UserService.mjs";
 import app from "./app.mjs";
 
 import logger from "./logs/pino.mjs";
@@ -14,7 +15,13 @@ sequelize
   .authenticate()
   .then(() => {
     logger.info("Connection has been established successfully");
-    // TODO: add admin
+    create({
+      name: "Admin",
+      description: "admin",
+      login: "admin",
+      role: "admin",
+      password: "nimda",
+    });
   })
   .catch((err) => {
     logger.error("Unable to connect to the database:", err);

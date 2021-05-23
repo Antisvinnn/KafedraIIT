@@ -10,9 +10,11 @@ export const generate = (data) => {
       role: data.role,
     },
     secret,
-    { expiresIn: "5m" }
+    { expiresIn: "15m" }
   );
-  const refreshToken = sign({ id: data.id }, secret, { expiresIn: "3d" });
+  const refreshToken = sign({ id: data.id, role: data.role }, secret, {
+    expiresIn: "3d",
+  });
   return {
     accessToken,
     refreshToken,

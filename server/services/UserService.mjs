@@ -8,11 +8,10 @@ export const get = (id) => {
     attributes: [
       "id",
       "userID",
-      "surname",
       "name",
-      "middleName",
       "role",
       "sex",
+      "contacts",
       "login",
       "photo",
       "tokens",
@@ -21,19 +20,31 @@ export const get = (id) => {
   });
 };
 
-export const getMe = (id) => {
+export const getAll = () => {
+  return Users.findAll({
+    attributes: ["userID", "name", "description", "contacts", "photo"],
+    where: { role: "user" },
+  });
+};
+
+export const getMe = (userID) => {
   return Users.findOne({
-    attributes: [
-      "userID",
-      "surname",
-      "name",
-      "middleName",
-      "role",
-      "sex",
-      "login",
-      "photo",
-    ],
-    where: { id },
+    attributes: ["userID", "name", "role", "sex", "contacts", "login", "photo"],
+    where: { userID },
+  });
+};
+
+export const getPublicInfo = (userID) => {
+  return Users.findOne({
+    attributes: ["userID", "name", "sex", "contacts", "photo"],
+    where: { userID },
+  });
+};
+
+export const getPostsById = (userID) => {
+  return Users.findOne({
+    attributes: ["posts"],
+    where: { userID },
   });
 };
 
@@ -51,10 +62,11 @@ export const create = (body) => {
       login: body.login,
     },
     defaults: {
-      surname: body.surname,
       name: body.name,
-      middleName: body.middleName,
       sex: body.sex,
+      description: body.description,
+      role: body.role,
+      contacts: body.contacts,
       login: body.login,
       password: body.password,
       photo: body.photo,
@@ -68,8 +80,49 @@ export const update = (body, id) => {
   });
 };
 
-export const del = (id) => {
-  return Users.destroy({
-    where: { id },
+export const change = (data, userID) => {
+  return Users.update(data, {
+    where: { userID },
   });
 };
+
+export const addPost = async (post, id) => {
+  // MUST HAVE OPTIMIZATION
+  if (!post.input) throw new Error("Incorrect input!");
+  const posts = await Users.findOne({
+    attributes: ["posts"],
+    where: { userID },
+  });
+  posts ??= [];
+  const numberOfPost = posts[posts.length - 1].id + 1 ?? 1;
+  posts.push({
+    upload: post?.upload,
+    input: post.input,
+    id: numberOfPost,
+  });
+  return Users.update(
+    { posts },
+    {
+      where: { id },
+    }
+  );
+};
+
+export const delPost = async (postID, id) => {
+  // MUST HAVE OPTIMIZATION
+  if (!postID) throw new Error("Incorrect post ID!");
+  const posts = await Users.findOne({
+    attributes: ["posts"],
+    where: { userID },
+  });
+  posts ??= [];
+  posts.splice(postID - 1, 1);
+  return Users.update(
+    { posts },
+    {
+      where: { id },
+    }
+  );
+};
+
+export const del = (userID) => Users.destroy({ where: { userID } });
