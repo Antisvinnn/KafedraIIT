@@ -21,8 +21,8 @@ const Users = sequelizeConnect.define(
       allowNull: false,
     },
     description: {
-      type: STRING,
-      allowNull: false,
+      type: TEXT,
+      allowNull: true,
     },
     login: {
       type: STRING,
@@ -37,6 +37,10 @@ const Users = sequelizeConnect.define(
       defaultValue: "user",
       allowNull: false,
     },
+    sex: {
+      type: STRING,
+      allowNull: true,
+    },
     tokens: {
       type: JSON,
       defaultValue: [],
@@ -45,6 +49,11 @@ const Users = sequelizeConnect.define(
     password: {
       type: STRING,
       allowNull: false,
+    },
+    contacts: {
+      type: JSON,
+      defaultValue: [],
+      allowNull: true,
     },
     photo: {
       type: TEXT,
