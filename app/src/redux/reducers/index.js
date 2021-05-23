@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import authReducer from './auth';
-import usersReducer from './users';
+import userReducer from './user';
+import publickReducer from './publick';
 
 const appReducer = combineReducers({
-	auth: authReducer,
-	users: usersReducer,
+	user: userReducer,
+	publick: publickReducer,
 });
 
 export const rootReducer = (state, action) => {
