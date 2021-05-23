@@ -1,4 +1,7 @@
 import StuffItem from '@components/stuffItem/StuffItem';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllStuff } from '@redux/actions/publick';
 import ava from '@assets/images/dark3.jpg';
 import arrow from '@assets/images/arrow.png';
 import { BackTop, Spin } from 'antd';
@@ -14,6 +17,10 @@ const Stuff = () => {
 		lineHeight: '40px',
 		bottom: '-40px',
 	};
+	const dispatch = useDispatch();
+	useEffect(() => dispatch(getAllStuff));
+	const stuff = useSelector((store) => store.publick.stuff);
+	console.log(stuff);
 	return (
 		<React.Fragment>
 			{testBool ? (
