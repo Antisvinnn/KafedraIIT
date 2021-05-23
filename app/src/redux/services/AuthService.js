@@ -1,24 +1,11 @@
-import auth from '@helper/auth';
+import axios from 'axios';
 
-class AuthService {
-	login(data) {
-		return auth('/login', 'POST', data);
-	}
-	logout(token) {
-		return auth('/logout', 'POST', { token: token });
-	}
-	refresh(token) {
-		return auth('/refresh', 'POST', { token: token });
-	}
-	check(login) {
-		return auth('/check', 'POST', { login: login });
-	}
-	info(login) {
-		return auth('/info', 'POST', { login: login });
-	}
-	register(data) {
-		return auth('/register', 'POST', data);
-	}
-}
-
-export default new AuthService();
+export const login = (data) => {
+	return axios.post('/login', data);
+};
+export const logout = (token) => {
+	return axios.post('/logout', { token: token });
+};
+export const refresh = (token) => {
+	return axios.post('/refresh', { token: token });
+};

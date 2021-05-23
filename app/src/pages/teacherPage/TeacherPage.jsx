@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import photoTest from '@assets/images/dark4.jpg';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
@@ -43,6 +44,7 @@ const TeacherPage = (props) => {
 			onSuccess('ok');
 		}, 0);
 	};
+	// console.log(process.env.NODE_ENV);  !!!!!!!!!!!!!!!
 	let getInfo = (values) => {
 		console.log(values);
 		if (values.input && values.upload !== undefined) {
@@ -60,12 +62,11 @@ const TeacherPage = (props) => {
 			/>
 			<div className={style.container}>
 				<div className={style.teacherDataContainer}>
-					<img className={style.image} src='http://placehold.it/400x400' alt='' />
+					<img className={style.image} src={photoTest} alt='' />
 					<div className={style.teacherDescription}>
 						<span className={style.name}>Смаль Александр Сергеевич</span>
 						<span className={style.rewards}>
-							Доцент, кандидат математических и физических наук Доцент, кандидат математических и
-							физических наук. Увлекается трендами и хайповой модой.
+							Доцент, кандидат математических и физических наук.
 						</span>
 						<Divider />
 						<span className={style.contacts}>

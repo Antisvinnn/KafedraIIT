@@ -1,12 +1,17 @@
 import axios from 'axios';
+import { refresh } from '../redux/actions/auth';
 
-export const Interceptors = (dispatch) => {
+const Interceptors = (dispatch) => {
 	axios.interceptors.response.use(
 		(response) => {
 			return response;
 		},
 		(error) => {
-			console.log(error.toString());
+			if (error.response.status === 401) {
+				dispatch(refresh);
+			}
 		}
 	);
 };
+
+export default Interceptors;
