@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import Config from "./config.mjs";
 
-let config = Config[process.env.NODE_ENV || "development"];
+const config = Config[process.env.NODE_ENV || "development"];
 
 const sequelize = new Sequelize(
   config.database,
