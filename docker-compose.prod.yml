@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: trytofindme
+    ports:
+      - 5432:5432
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8030:8080
+    depends_on:
+      - db
+
+  server:
+    build:
+      context: ./server
+      dockerfile: prod.Dockerfile
+    restart: always
+    ports:
+      - 33433:33433
+    volumes:
+      - logs:/usr/src/app/logs/output
+    depends_on:
+      - adminer
+
+volumes:
+  dbdata:
+    driver: local
+  logs:
+    driver: local

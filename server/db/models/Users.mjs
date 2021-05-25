@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
 import sequelizeConnect from "../config/connect.mjs";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 const { UUID, UUIDV4, STRING, TEXT, JSON, INTEGER } = Sequelize;
 
 const Users = sequelizeConnect.define(

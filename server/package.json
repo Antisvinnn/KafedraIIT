@@ -6,13 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon --experimental-json-modules --experimental-import-meta-resolve  server.js",
-    "build": "cross-env NODE_ENV=production node --experimental-json-modules --experimental-import-meta-resolve server.js"
+    "build": "cross-env NODE_ENV=production nodemon --experimental-json-modules --experimental-import-meta-resolve server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

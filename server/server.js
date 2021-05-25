@@ -11,18 +11,16 @@ const server = app.listen(PORT, (err) => {
 });
 server.setTimeout(3000000);
 
-sequelize
-  .authenticate()
-  .then(() => {
-    logger.info("Connection has been established successfully");
-    create({
-      name: "Admin",
-      description: "admin",
-      login: "admin",
-      role: "admin",
-      password: "nimda",
-    });
-  })
-  .catch((err) => {
-    logger.error("Unable to connect to the database:", err);
+try {
+  await sequelize.authenticate();
+  logger.info("Connection has been established successfully");
+  create({
+    name: "Admin",
+    description: "admin",
+    login: "admin",
+    role: "admin",
+    password: "nimda",
   });
+} catch (error) {
+  logger.error("Unable to connect to the database:", error);
+}
