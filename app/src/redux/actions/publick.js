@@ -10,7 +10,7 @@ import {
 	GET_ONLY_TEACHER_POSTS,
 	PUBLICK_REQUEST,
 	PUBLICK_FAILED,
-} from '../reducers/publick';
+} from '../actionsTypes/publick';
 
 import { message } from 'antd';
 
