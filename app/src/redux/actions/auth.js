@@ -6,7 +6,7 @@ import {
 	AUTH_LOGOUT_REQUEST,
 	AUTH_LOGOUT_SUCCESS,
 	AUTH_LOGOUT_FAILED,
-} from '@redux/actionsTypes/user';
+} from '@redux/actionsTypes/auth';
 import { whoAmI } from './users';
 
 export const login = (data) => {

@@ -1,9 +1,20 @@
 import { Form, Input, Button, Checkbox } from 'antd';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/actions/auth';
 import style from './style.module.scss';
 
 const LoginPage = () => {
+	const dispatch = useDispatch();
+	const getData = (values) => {
+		console.log(values);
+	};
 	return (
-		<Form name='basic' initialValues={{ remember: true }} className={style.form}>
+		<Form
+			onFinish={getData}
+			name='basic'
+			initialValues={{ remember: true }}
+			className={style.form}
+		>
 			<Form.Item
 				label='Логин'
 				name='username'
@@ -20,9 +31,9 @@ const LoginPage = () => {
 				<Input.Password />
 			</Form.Item>
 
-			<Form.Item name='remember' valuePropName='checked'>
+			{/* <Form.Item name='remember' valuePropName='checked'>
 				<Checkbox>Remember me</Checkbox>
-			</Form.Item>
+			</Form.Item> */}
 
 			<Form.Item>
 				<Button type='primary' htmlType='submit'>

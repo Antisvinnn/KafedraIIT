@@ -11,7 +11,6 @@ import {
 	PUBLICK_REQUEST,
 	PUBLICK_FAILED,
 } from '../actionsTypes/publick';
-
 import { message } from 'antd';
 
 export function getAllStuff() {

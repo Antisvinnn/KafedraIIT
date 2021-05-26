@@ -21,7 +21,7 @@ const publickReducer = (state = initialState, action) => {
 			newState.isDataLoading = true;
 			return newState;
 		case PUBLICK_FAILED:
-			newState.isDataLoading = true;
+			newState.isDataLoading = false;
 			newState.message = action.payload;
 			return newState;
 		case GET_ALL_STUFF:

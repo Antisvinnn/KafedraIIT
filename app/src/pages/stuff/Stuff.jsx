@@ -18,7 +18,8 @@ const Stuff = () => {
 		bottom: '-40px',
 	};
 	const dispatch = useDispatch();
-	useEffect(() => dispatch(getAllStuff));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(() => dispatch(getAllStuff()), []);
 	const stuff = useSelector((store) => store.publick.stuff);
 	console.log(stuff);
 	return (
