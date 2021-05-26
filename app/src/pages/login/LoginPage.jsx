@@ -5,12 +5,13 @@ import style from './style.module.scss';
 
 const LoginPage = () => {
 	const dispatch = useDispatch();
-	const getData = (values) => {
+	const postData = (values) => {
 		console.log(values);
+		dispatch(login(values));
 	};
 	return (
 		<Form
-			onFinish={getData}
+			onFinish={postData}
 			name='basic'
 			initialValues={{ remember: true }}
 			className={style.form}
@@ -37,7 +38,7 @@ const LoginPage = () => {
 
 			<Form.Item>
 				<Button type='primary' htmlType='submit'>
-					Submit
+					Войти
 				</Button>
 			</Form.Item>
 		</Form>

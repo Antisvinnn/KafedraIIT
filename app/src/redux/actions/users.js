@@ -1,15 +1,15 @@
-import UsersService from '../../services/UsersService';
+import { WhoAmI } from '@redux/services/UserService';
 import {
 	WHO_AM_I_REQUEST,
 	WHO_AM_I_SUCCESS,
 	WHO_AM_I_FAILED,
-} from '../actionsTypes/users';
+} from '@redux/actionsTypes/user';
 import { logout } from './auth';
 
 export function whoAmI() {
 	return async function (dispatch) {
 		dispatch({ type: WHO_AM_I_REQUEST });
-		UsersService.whoAmI()
+		WhoAmI()
 			.then((data) => {
 				dispatch({ type: WHO_AM_I_SUCCESS, payload: data.data });
 				return Promise.resolve();
