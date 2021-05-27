@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/me", async (req, res) => {
   try {
+    logger.info(req.user.id);
     const data = await getMe(req.user.id);
     res.status(200).json(data);
   } catch (error) {

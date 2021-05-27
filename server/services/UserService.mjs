@@ -7,7 +7,6 @@ export const get = (id) => {
   return Users.findOne({
     attributes: [
       "id",
-      "userID",
       "name",
       "role",
       "sex",
@@ -27,24 +26,24 @@ export const getAll = () => {
   });
 };
 
-export const getMe = (userID) => {
+export const getMe = (id) => {
   return Users.findOne({
-    attributes: ["userID", "name", "role", "sex", "contacts", "login", "photo"],
-    where: { userID },
+    attributes: ["id", "name", "role", "sex", "contacts", "login", "photo"],
+    where: { id },
   });
 };
 
-export const getPublicInfo = (userID) => {
+export const getPublicInfo = (id) => {
   return Users.findOne({
-    attributes: ["userID", "name", "sex", "contacts", "photo"],
-    where: { userID },
+    attributes: ["id", "name", "sex", "contacts", "photo"],
+    where: { id },
   });
 };
 
-export const getPostsById = (userID) => {
+export const getPostsById = (id) => {
   return Users.findOne({
     attributes: ["posts"],
-    where: { userID },
+    where: { id },
   });
 };
 
@@ -80,9 +79,9 @@ export const update = (body, id) => {
   });
 };
 
-export const change = (data, userID) => {
+export const change = (data, id) => {
   return Users.update(data, {
-    where: { userID },
+    where: { id },
   });
 };
 
@@ -91,7 +90,7 @@ export const addPost = async (post, id) => {
   if (!post.input) throw new Error("Incorrect input!");
   const posts = await Users.findOne({
     attributes: ["posts"],
-    where: { userID },
+    where: { id },
   });
   posts ??= [];
   const numberOfPost = posts[posts.length - 1].id + 1 ?? 1;
@@ -113,7 +112,7 @@ export const delPost = async (postID, id) => {
   if (!postID) throw new Error("Incorrect post ID!");
   const posts = await Users.findOne({
     attributes: ["posts"],
-    where: { userID },
+    where: { id },
   });
   posts ??= [];
   posts.splice(postID - 1, 1);
@@ -125,4 +124,4 @@ export const delPost = async (postID, id) => {
   );
 };
 
-export const del = (userID) => Users.destroy({ where: { userID } });
+export const del = (id) => Users.destroy({ where: { id } });

@@ -27,7 +27,7 @@ services:
     ports:
       - 33433:33433
     volumes:
-      - logs:/usr/src/app/logs/output
+      - logs:/usr/src/app/logs
     depends_on:
       - adminer
 

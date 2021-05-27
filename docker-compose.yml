@@ -1,18 +1,18 @@
-version: '3.8'
+version: "3.8"
 
 services:
- db:
-  image: postgres
-  restart: always
-  environment:
-   POSTGRES_PASSWORD: trytofindme
-  ports:
-   - 5432:5432
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: trytofindme
+    ports:
+      - 5432:5432
 
   adminer:
-   image: adminer
-   restart: always
-   ports:
-    - 8030:8080
-   depends_on:
-    - db
+    image: adminer
+    restart: always
+    ports:
+      - 8030:8080
+    depends_on:
+      - db
