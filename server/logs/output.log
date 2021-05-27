@@ -1,2 +1,30 @@
-{"level":30,"time":1622155938964,"pid":70437,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
-{"level":30,"time":1622155938990,"pid":70437,"hostname":"dev-System","msg":"Connection has been established successfully"}
+{"level":30,"time":1622157425427,"pid":76823,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157425433,"pid":76823,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157648627,"pid":77218,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157648635,"pid":77218,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157724292,"pid":77357,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157724299,"pid":77357,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157735911,"pid":77421,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157735925,"pid":77421,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157791648,"pid":77543,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157791658,"pid":77543,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157828470,"pid":77618,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157828480,"pid":77618,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157844002,"pid":77657,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157844014,"pid":77657,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157884950,"pid":77742,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157884957,"pid":77742,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157887093,"pid":77764,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157887099,"pid":77764,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622157953247,"pid":77977,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":50,"time":1622157953258,"pid":77977,"hostname":"dev-System","msg":"Unable to connect to the database:"}
+{"level":30,"time":1622158120791,"pid":78346,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":30,"time":1622158120819,"pid":78346,"hostname":"dev-System","msg":"Connection has been established successfully"}
+{"level":30,"time":1622158202132,"pid":78618,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":30,"time":1622158202167,"pid":78618,"hostname":"dev-System","msg":"Connection has been established successfully"}
+{"level":30,"time":1622158216331,"pid":78650,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":30,"time":1622158216361,"pid":78650,"hostname":"dev-System","msg":"Connection has been established successfully"}
+{"level":30,"time":1622158282695,"pid":78786,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":30,"time":1622158282723,"pid":78786,"hostname":"dev-System","msg":"Connection has been established successfully"}
+{"level":30,"time":1622158290477,"pid":78818,"hostname":"dev-System","msg":"Server runing on PORT: 33433"}
+{"level":30,"time":1622158290505,"pid":78818,"hostname":"dev-System","msg":"Connection has been established successfully"}

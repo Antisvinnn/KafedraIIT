@@ -1,9 +1,13 @@
 import sequelize from "./db/config/connect.mjs";
 import { create } from "./services/UserService.mjs";
 import app from "./app.mjs";
-
+import dotenv from "dotenv";
 import logger from "./logs/pino.mjs";
-const PORT = 33433;
+
+dotenv.config();
+
+const PORT = process.env.NODE_ENV === "development" ? 33433 : process.env.PORT;
+const password = process.env.ADMIN_PASSWORD;
 
 const server = app.listen(PORT, (err) => {
   if (err) logger.error(err);
@@ -19,7 +23,7 @@ try {
     description: "admin",
     login: "admin",
     role: "admin",
-    password: "nimda",
+    password,
   });
 } catch (error) {
   logger.error("Unable to connect to the database:", error);

@@ -2,11 +2,14 @@ import Sequelize from "sequelize";
 import Config from "./config.mjs";
 
 const config = Config[process.env.NODE_ENV || "development"];
+console.log(process.env.DB_PASSWORD);
 
 const sequelize = new Sequelize(
   config.database,
   config.username,
-  config.password,
+  process.env.NODE_ENV === "development"
+    ? config.password
+    : process.env.DB_PASSWORD,
   {
     host: config.host,
     dialect: "postgres",
