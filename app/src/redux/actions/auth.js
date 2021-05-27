@@ -42,15 +42,15 @@ export const logout = () => {
     Logout(localStorage.getItem("refreshToken"));
     try {
       dispatch({ type: AUTH_LOGOUT_SUCCESS });
-      //   localStorage.removeItem("accessToken");
-      //   localStorage.removeItem("refreshToken");
-      //   localStorage.removeItem("expires_in");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("expires_in");
       axios.defaults.headers.common["Authorization"] = "";
       return Promise.resolve();
     } catch (err) {
-      //   localStorage.removeItem("accessToken");
-      //   localStorage.removeItem("refreshToken");
-      //   localStorage.removeItem("expires_in");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("expires_in");
       dispatch({ type: AUTH_LOGOUT_FAILED, payload: "Что-то пошло не так" });
       return Promise.reject("Что-то пошло не так");
     }
