@@ -21,7 +21,7 @@ export const get = (id) => {
 
 export const getAll = () => {
   return Users.findAll({
-    attributes: ["userID", "name", "description", "contacts", "photo"],
+    attributes: ["id", "name", "description", "contacts", "photo"],
     where: { role: "user" },
   });
 };
