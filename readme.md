@@ -1,6 +1,6 @@
 # HOW TO START BACK-END?
 
-1. # create ".env" file in folder "server" with variables:
+1. ###### create ".env" file in folder "server" with variables:
    ###### DB_PASSWORD=YOR_PASSWORD_TO_DB
    ###### ADMIN_PASSWORD=YOR_PASSWORD_TO_ADMIN
    ###### PORT=33433
