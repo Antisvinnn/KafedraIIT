@@ -19,6 +19,7 @@ const userReducer = (state = initialState, action) => {
 			return newState;
 		case WHO_AM_I_SUCCESS:
 			newState.isProfileLoading = false;
+			newState.message = action.payload;
 			return newState;
 		case WHO_AM_I_FAILED:
 			newState.isProfileLoading = false;
