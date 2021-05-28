@@ -25,15 +25,15 @@ const publickReducer = (state = initialState, action) => {
 			newState.message = action.payload;
 			return newState;
 		case GET_ALL_STUFF:
-			newState.isProfileLoading = false;
+			newState.isDataLoading = false;
 			newState.stuff = action.payload;
 			return newState;
 		case GET_ONLY_TEACHER:
-			newState.isProfileLoading = false;
+			newState.isDataLoading = false;
 			newState.onlyTeacher = action.payload;
 			return newState;
 		case GET_ONLY_TEACHER_POSTS:
-			newState.isProfileLoading = false;
+			newState.isDataLoading = false;
 			newState.onlyTeacherPosts = action.payload;
 			return newState;
 		default:
