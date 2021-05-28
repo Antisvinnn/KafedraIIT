@@ -9,7 +9,6 @@ import { BackTop, Spin } from 'antd';
 import style from './style.module.scss';
 import React from 'react';
 
-let testBool = false;
 const Stuff = () => {
 	const styleBackTop = {
 		height: 90,
@@ -21,7 +20,19 @@ const Stuff = () => {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => dispatch(getAllStuff()), []);
 	const stuff = useSelector((store) => store.publick.stuff);
-	console.log(stuff);
+	let testBool = useSelector((store) => store.publick.isDataLoading);
+	let showAllStuff = function () {
+		let output = stuff.map((element) => (
+			<StuffItem
+				id={element.id}
+				key={element.id}
+				img={element.photo}
+				name={element.name}
+				subtitle={element.description}
+			/>
+		));
+		return output;
+	};
 	return (
 		<React.Fragment>
 			{testBool ? (
@@ -50,42 +61,7 @@ const Stuff = () => {
 							</p>
 						</section>
 						<section className={style.section + ' ' + style.sectionStuff}>
-							<StuffItem
-								img={ava}
-								name='Безобразов А.С.'
-								subtitle='Доцент, кандидат наук'
-								id='1'
-							/>
-							{/* <StuffItem img={ava} name='Михняев В.С.' subtitle='Доцент, кандидат наук' id='2' />
-							<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
-							<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' />
-							<StuffItem
-								img={ava}
-								name='Безобразов А.С.'
-								subtitle='Доцент, кандидат наук'
-								id='3'
-							/>
-							<StuffItem
-								img={ava}
-								name='Михняев В.С.'
-								subtitle='Доцент, кандидат наук, чемпион мира, чемп, просто лучший'
-								id='4'
-							/>
-							<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
-							<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' />
-							<StuffItem
-								img={ava}
-								name='Безобразов А.С.'
-								subtitle='Доцент, кандидат наук'
-								id='5'
-							/>
-							<StuffItem
-								img={ava}
-								name='Михняев В.С.'
-								subtitle='Доцент, кандидат наук, чемпион мира, чемп, просто лучший'
-							/>
-							<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
-							<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' /> */}
+							{showAllStuff()}
 						</section>
 					</div>
 					<footer className={style.footer}>

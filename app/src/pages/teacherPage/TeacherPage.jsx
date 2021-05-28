@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
+import { getOnlyTeacher } from '@redux/actions/publick';
 import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import photoTest from '@assets/images/dark4.jpg';
+// import photoTest from '@assets/images/dark4.jpg';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
 
-const TeacherPage = (props) => {
+const TeacherPage = ({ name, description, photo, posts, contacts }) => {
 	let testBool = true;
 	const { id } = useParams();
 	const history = useHistory();
+	let dispatch = useDispatch();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(() => dispatch(getOnlyTeacher(id)), []);
+	const response = useSelector((store) => store.publick.onlyTeacher);
+	console.log('--------------------------------');
+	console.log(response);
 	const routes = [
 		{
 			path: 'stuff',
@@ -62,16 +70,12 @@ const TeacherPage = (props) => {
 			/>
 			<div className={style.container}>
 				<div className={style.teacherDataContainer}>
-					<img className={style.image} src={photoTest} alt='' />
+					<img className={style.image} src={photo} alt='' />
 					<div className={style.teacherDescription}>
-						<span className={style.name}>Смаль Александр Сергеевич</span>
-						<span className={style.rewards}>
-							Доцент, кандидат математических и физических наук.
-						</span>
+						<span className={style.name}>{name}</span>
+						<span className={style.rewards}>{description}</span>
 						<Divider />
-						<span className={style.contacts}>
-							Контакты: <br /> Телефон: +375(44)557-45-82 <br /> Почта: antisvinnn@gmail.com
-						</span>
+						<span className={style.contacts}>Контакты: {contacts}</span>
 					</div>
 				</div>
 			</div>

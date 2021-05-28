@@ -27,10 +27,10 @@ export function getAllStuff() {
 		}
 	};
 }
-export function getOnlyTeacher(data) {
+export function getOnlyTeacher(id) {
 	return async function (dispatch) {
 		dispatch({ type: PUBLICK_REQUEST });
-		const response = await GetOnlyTeacher(data);
+		const response = await GetOnlyTeacher(id);
 		const TEACHER = response?.data;
 		try {
 			TEACHER ?? new Error('Failed request.');
