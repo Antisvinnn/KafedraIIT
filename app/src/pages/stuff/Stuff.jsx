@@ -56,7 +56,7 @@ const Stuff = () => {
 								subtitle='Доцент, кандидат наук'
 								id='1'
 							/>
-							<StuffItem img={ava} name='Михняев В.С.' subtitle='Доцент, кандидат наук' id='2' />
+							{/* <StuffItem img={ava} name='Михняев В.С.' subtitle='Доцент, кандидат наук' id='2' />
 							<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
 							<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' />
 							<StuffItem
@@ -85,7 +85,7 @@ const Stuff = () => {
 								subtitle='Доцент, кандидат наук, чемпион мира, чемп, просто лучший'
 							/>
 							<StuffItem img={ava} name='Смаль А.С' subtitle='Доцент, кандидат наук' id='1' />
-							<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' />
+							<StuffItem img={ava} name='Хвещук Г.Н.' subtitle='Доцент, кандидат наук' id='1' /> */}
 						</section>
 					</div>
 					<footer className={style.footer}>
