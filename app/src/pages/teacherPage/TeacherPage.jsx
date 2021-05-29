@@ -9,7 +9,7 @@ import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
 
-const TeacherPage = ({ name, description, photo, posts, contacts }) => {
+const TeacherPage = (props) => {
 	let testBool = true;
 	const { id } = useParams();
 	const history = useHistory();
@@ -70,12 +70,12 @@ const TeacherPage = ({ name, description, photo, posts, contacts }) => {
 			/>
 			<div className={style.container}>
 				<div className={style.teacherDataContainer}>
-					<img className={style.image} src={photo} alt='' />
+					<img className={style.image} src={response.photo} alt='' />
 					<div className={style.teacherDescription}>
-						<span className={style.name}>{name}</span>
-						<span className={style.rewards}>{description}</span>
+						<span className={style.name}>{response.name}</span>
+						<span className={style.rewards}>{response.description}</span>
 						<Divider />
-						<span className={style.contacts}>Контакты: {contacts}</span>
+						<span className={style.contacts}>Контакты: {response.contacts}</span>
 					</div>
 				</div>
 			</div>
