@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../redux/actions/auth';
@@ -29,7 +29,6 @@ const LoginPage = () => {
 			>
 				<Input />
 			</Form.Item>
-
 			<Form.Item
 				label='Пароль'
 				name='password'
@@ -37,11 +36,6 @@ const LoginPage = () => {
 			>
 				<Input.Password />
 			</Form.Item>
-
-			{/* <Form.Item name='remember' valuePropName='checked'>
-				<Checkbox>Remember me</Checkbox>
-			</Form.Item> */}
-
 			<Form.Item>
 				<Button type='primary' htmlType='submit'>
 					Войти

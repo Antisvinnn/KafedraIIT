@@ -8,7 +8,7 @@ import {
 const initialState = {
 	profile: {},
 	isProfileLoading: false,
-	message: null,
+	authData: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -19,7 +19,7 @@ const userReducer = (state = initialState, action) => {
 			return newState;
 		case WHO_AM_I_SUCCESS:
 			newState.isProfileLoading = false;
-			newState.message = action.payload;
+			newState.authData = action.payload;
 			return newState;
 		case WHO_AM_I_FAILED:
 			newState.isProfileLoading = false;

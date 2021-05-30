@@ -10,7 +10,7 @@ const initialState = {
 	stuff: [],
 	onlyTeacher: {},
 	onlyTeacherPosts: [],
-	isDataLoading: false,
+	isDataLoading: true,
 	message: null,
 };
 

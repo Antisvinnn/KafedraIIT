@@ -11,7 +11,7 @@ import {
 const initialState = {
 	accessToken: localStorage.getItem('accessToken') || '',
 	loading: false,
-	message: '',
+	message: null,
 };
 
 const authReducer = (state = initialState, action) => {

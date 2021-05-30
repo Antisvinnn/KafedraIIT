@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import { whoAmI } from '@redux/actions/users';
 
 import Header from '@components/header/Header';
 
@@ -7,8 +8,12 @@ import Stuff from '@pages/stuff/Stuff';
 import TeacherPage from '@pages/teacherPage/TeacherPage';
 import LoginPage from '@pages/login/LoginPage';
 import Page404 from '@pages/page404/Page404';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 const App = () => {
+	const dispatch = useDispatch();
+	useEffect(() => dispatch(whoAmI()), []);
 	return (
 		<div>
 			<Header />

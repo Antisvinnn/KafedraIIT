@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
+import { whoAmI } from '@redux/actions/users';
 import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 // import photoTest from '@assets/images/dark4.jpg';
@@ -10,15 +11,19 @@ import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
 
 const TeacherPage = (props) => {
-	let testBool = true;
 	const { id } = useParams();
 	const history = useHistory();
 	let dispatch = useDispatch();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => dispatch(getOnlyTeacher(id)), []);
+	useEffect(() => dispatch(whoAmI()));
 	const response = useSelector((store) => store.publick.onlyTeacher);
-	console.log('--------------------------------');
+	const isLoading = useSelector((store) => store.publick.isDataLoading);
+	console.log(
+		'------------------------------------------------------------------------------'
+	);
 	console.log(response);
+	console.log(isLoading);
 	const routes = [
 		{
 			path: 'stuff',
@@ -56,7 +61,7 @@ const TeacherPage = (props) => {
 	let getInfo = (values) => {
 		console.log(values);
 		if (values.input && values.upload !== undefined) {
-			message.success('Файлы и описание опубликованы!');
+			message.success('Файлы и описание приняты!');
 		}
 	};
 	return (
@@ -79,7 +84,7 @@ const TeacherPage = (props) => {
 					</div>
 				</div>
 			</div>
-			{testBool ? (
+			{isLoading ? null : (
 				<React.Fragment>
 					<Divider plain>Панель навигации</Divider>
 					<Form className={style.form} onFinish={getInfo}>
@@ -108,7 +113,7 @@ const TeacherPage = (props) => {
 						</div>
 					</Form>
 				</React.Fragment>
-			) : null}
+			)}
 
 			<Divider plain>Публикации преподавателя</Divider>
 			<div>123</div>
