@@ -30,9 +30,9 @@ export function whoAmI() {
 	return async function (dispatch) {
 		dispatch({ type: WHO_AM_I_REQUEST });
 		const response = await WhoAmI();
-		const message = response.data;
+		const authData = response.data;
 		try {
-			dispatch({ type: WHO_AM_I_SUCCESS, payload: message });
+			dispatch({ type: WHO_AM_I_SUCCESS, payload: authData });
 			console.log('Try block reacted');
 		} catch {
 			dispatch({ type: WHO_AM_I_FAILED });
