@@ -32,8 +32,9 @@ export function whoAmI() {
 		const response = await WhoAmI();
 		const authData = response.data;
 		try {
-			dispatch({ type: WHO_AM_I_SUCCESS, payload: authData });
-			console.log('Try block reacted');
+			authData
+				? dispatch({ type: WHO_AM_I_SUCCESS, payload: authData })
+				: console.log('Try block reacted but - Failed request');
 		} catch {
 			dispatch({ type: WHO_AM_I_FAILED });
 			console.log('Catch block reacted');
