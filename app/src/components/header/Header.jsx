@@ -9,6 +9,7 @@ import style from './style.module.scss';
 const Header = () => {
 	const dispatch = useDispatch();
 	const accessToken = useSelector((store) => store.auth.accessToken);
+	const teacherID = useSelector((store) => store.user.authData.id);
 	const menu = (
 		<Menu>
 			<Menu.Item danger onClick={() => dispatch(logout())}>
