@@ -15,10 +15,7 @@ export const login = (data) => {
 		dispatch({ type: AUTH_LOGIN_REQUEST });
 		try {
 			const response = await Login(data);
-			dispatch({
-				type: AUTH_LOGIN_SUCCESS,
-				payload: response.data.accessToken,
-			});
+			dispatch({ type: AUTH_LOGIN_SUCCESS, payload: response.data.accessToken });
 			localStorage.setItem('accessToken', response.data.accessToken);
 			localStorage.setItem('refreshToken', response.data.refreshToken);
 			localStorage.setItem('expires_in', response.data.expires_in);

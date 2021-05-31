@@ -23,6 +23,7 @@ const authReducer = (state = initialState, action) => {
 			return newState;
 		case AUTH_LOGIN_SUCCESS:
 			newState.accessToken = action.payload;
+			message.success('Вход в аккаунт успешно выполнен!');
 			newState.loading = false;
 			return newState;
 		case AUTH_LOGIN_FAILED:
@@ -35,6 +36,7 @@ const authReducer = (state = initialState, action) => {
 			return newState;
 		case AUTH_LOGOUT_SUCCESS:
 			newState.loading = false;
+			message.success('Выход из аккаунта успешно выполнен!');
 			newState.accessToken = '';
 			return newState;
 		case AUTH_LOGOUT_FAILED:

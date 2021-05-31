@@ -1,4 +1,4 @@
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../redux/actions/auth';
@@ -10,10 +10,6 @@ const LoginPage = () => {
 		dispatch(login(values));
 	};
 	const accessToken = useSelector((store) => store.auth.accessToken);
-	console.log(accessToken);
-	if (accessToken) {
-		message.success('Вы авторизованы');
-	}
 	return (
 		<Form
 			onFinish={postData}
