@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
@@ -6,6 +6,7 @@ import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
+import ModalWindow from '@components/modalWindow/ModalWindow';
 import style from './style.module.scss';
 
 const TeacherPage = () => {
@@ -18,6 +19,8 @@ const TeacherPage = () => {
 	const isLoading = useSelector((store) => store.publick.isDataLoading);
 	const userRole = useSelector((store) => store.user?.authData?.role);
 	const userID = useSelector((store) => store.user?.authData?.id);
+	// const [action, setAction] = useState();
+	const [visible, setVisible] = useState(false);
 	const roleRenderer = () => {
 		if (userRole === 'user' && id == userID) {
 			return (
@@ -53,7 +56,7 @@ const TeacherPage = () => {
 				<div className={style.adminBarContainer}>
 					<Divider plain>Панель навигации</Divider>
 					<div className={style.adminBar}>
-						<Button className={style.adminBtn} type='primary'>
+						<Button onClick={() => setVisible(true)} className={style.adminBtn} type='primary'>
 							Добавить преподавателя
 						</Button>
 						<Button className={style.adminBtn}>Просмотреть преподавателей</Button>
@@ -73,7 +76,6 @@ const TeacherPage = () => {
 			return null;
 		}
 	};
-	console.log(userRole);
 	const routes = [
 		{
 			path: 'stuff',
@@ -114,6 +116,7 @@ const TeacherPage = () => {
 			message.success('Файлы и описание приняты!');
 		}
 	};
+
 	return (
 		<div className={style.main}>
 			<PageHeader
@@ -137,7 +140,8 @@ const TeacherPage = () => {
 			{isLoading ? null : <React.Fragment>{roleRenderer()}</React.Fragment>}
 
 			<Divider plain>Публикации преподавателя</Divider>
-			<div>123</div>
+			<p>123</p>
+			<ModalWindow visible={visible} setVisible={setVisible} />
 		</div>
 	);
 };
