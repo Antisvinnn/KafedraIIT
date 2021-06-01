@@ -11,7 +11,7 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) =
 			centered
 			title='Добавить преподавателя'
 			visible={visible}
-			s
+			onCancel={() => setVisible(false)}
 			closable={false}
 			onOk={handleOk}
 		>
