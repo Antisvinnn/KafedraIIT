@@ -4,7 +4,6 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
 import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-// import photoTest from '@assets/images/dark4.jpg';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import style from './style.module.scss';
@@ -18,8 +17,9 @@ const TeacherPage = () => {
 	const response = useSelector((store) => store.publick.onlyTeacher);
 	const isLoading = useSelector((store) => store.publick.isDataLoading);
 	const userRole = useSelector((store) => store.user?.authData?.role);
+	const userID = useSelector((store) => store.user?.authData?.id);
 	const roleRenderer = () => {
-		if (userRole === 'user') {
+		if (userRole === 'user' && id == userID) {
 			return (
 				<Form className={style.form} onFinish={getInfo}>
 					<Divider plain>Панель навигации</Divider>
