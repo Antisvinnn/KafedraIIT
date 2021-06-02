@@ -4,12 +4,23 @@ import Form from 'antd/lib/form/Form';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import FormItem from 'antd/lib/form/FormItem';
+import { useDispatch } from 'react-redux';
+import { addTeacher as AddTeacher } from '@redux/actions/admin';
 
 const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) => {
-	const [state, setState] = useState({ loading: false });
+	// const [state, setState] = useState({ loading: false });
+	const dispatch = useDispatch();
 	const handleOk = () => {
 		setVisible(false);
 	};
+	// const getBase64 = (img, callback) => {
+	// 	const reader = new FileReader();
+	// 	reader.addEventListener('load', () => {
+	// 		setImage(reader.result);
+	// 		callback(reader.result);
+	// 	});
+	// 	reader.readAsDataURL(img);
+	// };
 	const beforeUpload = (file) => {
 		const isJpgOrPng =
 			file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg';
@@ -25,27 +36,23 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) =
 		file.status = 'done';
 		return false;
 	};
-	function getBase64(img, callback) {
-		const reader = new FileReader();
-		reader.addEventListener('load', () => callback(reader.result));
-		reader.readAsDataURL(img);
-	}
-	const handleChange = (info) => {
-		if (info.file.status === 'uploading') {
-			setState({ loading: true });
-			return;
-		}
-		if (info.file.status === 'done') {
-			getBase64(info.file.originFileObj, (imageUrl) =>
-				setState({
-					imageUrl,
-					loading: false,
-				})
-			);
-		}
-	};
-	const getValues = (values) => {
+	// const handleChange = (info) => {
+	// 	if (info.file.status === 'uploading') {
+	// 		setState({ loading: true });
+	// 		return;
+	// 	}
+	// 	if (info.file.status === 'done') {
+	// 		getBase64(info.file.originFileObj, (imageUrl) =>
+	// 			setState({
+	// 				imageUrl,
+	// 				loading: false,
+	// 			})
+	// 		);
+	// 	}
+	// };
+	const addTeacher = (values) => {
 		console.log(values);
+		dispatch(AddTeacher(values));
 	};
 
 	return (
@@ -58,7 +65,7 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) =
 			footer={false}
 			onOk={handleOk}
 		>
-			<Form onFinish={getValues}>
+			<Form onFinish={addTeacher}>
 				<FormItem className={style.formItem} name='name'>
 					<Input className={style.input} placeholder='ФИО (Иванов Иван Иванович)' />
 				</FormItem>
@@ -77,12 +84,12 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) =
 				<FormItem className={style.formItem} name='password'>
 					<Input className={style.input} placeholder='Пароль' />
 				</FormItem>
-				<FormItem className={style.formItem} name='upload'>
+				<FormItem className={style.formItem} name='photo'>
 					<Upload
 						beforeUpload={beforeUpload}
 						maxCount={1}
 						name='avatar'
-						onChange={handleChange}
+						// onChange={handleChange}
 						listType='picture-card'
 						className={style.uploader}
 						showUploadList={false}
