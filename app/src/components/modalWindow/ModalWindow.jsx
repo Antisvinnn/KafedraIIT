@@ -1,58 +1,62 @@
+import React from 'react';
 import style from './style.module.scss';
 import { Input, Modal, Upload, message, Button } from 'antd';
 import Form from 'antd/lib/form/Form';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { InboxOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import FormItem from 'antd/lib/form/FormItem';
 import { useDispatch } from 'react-redux';
 import { addTeacher as AddTeacher } from '@redux/actions/admin';
 
 const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) => {
-	// const [state, setState] = useState({ loading: false });
 	const dispatch = useDispatch();
 	const handleOk = () => {
 		setVisible(false);
 	};
-	// const getBase64 = (img, callback) => {
-	// 	const reader = new FileReader();
-	// 	reader.addEventListener('load', () => {
-	// 		setImage(reader.result);
-	// 		callback(reader.result);
-	// 	});
-	// 	reader.readAsDataURL(img);
-	// };
+	function encodeImageFileAsURL(element, values) {
+		var file = element.file;
+		var reader = new FileReader();
+		reader.onloadend = function () {
+			const objectToSend = { ...values };
+			objectToSend.photo = reader.result;
+			console.log(objectToSend);
+			dispatch(AddTeacher(objectToSend));
+		};
+		reader.readAsDataURL(file);
+	}
 	const beforeUpload = (file) => {
 		const isJpgOrPng =
 			file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg';
 		if (!isJpgOrPng) {
-			message.error('Допускаются только JPG/PNG файлы!');
+			message.error('Вы можете загружать файлы только JPG/JPEG/PNG типа!');
 			return;
 		}
-		const isLt2M = file.size / 1024 / 1024 < 4;
-		if (!isLt2M) {
-			message.error('Изображение должно быть меньше чем 4MB!');
+		const isLt4M = file.size / 1024 / 1024 < 4;
+		if (!isLt4M) {
+			message.error('Изображение должно быть меньше 4MB!');
 			return;
 		}
 		file.status = 'done';
 		return false;
 	};
-	// const handleChange = (info) => {
-	// 	if (info.file.status === 'uploading') {
-	// 		setState({ loading: true });
-	// 		return;
-	// 	}
-	// 	if (info.file.status === 'done') {
-	// 		getBase64(info.file.originFileObj, (imageUrl) =>
-	// 			setState({
-	// 				imageUrl,
-	// 				loading: false,
-	// 			})
-	// 		);
-	// 	}
-	// };
 	const addTeacher = (values) => {
 		console.log(values);
-		dispatch(AddTeacher(values));
+		encodeImageFileAsURL(values.photo, values);
+	};
+	const onPreview = async (file) => {
+		let src = file.url;
+		if (!src) {
+			src = await new Promise((resolve) => {
+				const reader = new FileReader();
+				reader.readAsDataURL(file.originFileObj);
+				reader.onload = () => resolve(reader.result);
+				console.log(reader.result);
+			});
+		}
+		const image = new Image();
+		image.src = src;
+		const imgWindow = window.open(src);
+		imgWindow.document.write(image.outerHTML);
 	};
 
 	return (
@@ -86,13 +90,11 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, typeOfAction }) =
 				</FormItem>
 				<FormItem className={style.formItem} name='photo'>
 					<Upload
-						beforeUpload={beforeUpload}
-						maxCount={1}
-						name='avatar'
-						// onChange={handleChange}
-						listType='picture-card'
 						className={style.uploader}
-						showUploadList={false}
+						beforeUpload={beforeUpload}
+						listType='picture-card'
+						onPreview={onPreview}
+						maxCount={1}
 					>
 						Загрузить фото
 					</Upload>
