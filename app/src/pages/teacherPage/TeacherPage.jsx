@@ -52,7 +52,7 @@ const TeacherPage = () => {
 					</div>
 				</Form>
 			);
-		} else if (userRole === 'admin') {
+		} else if (userRole === 'admin' && id == userID) {
 			return (
 				<div className={style.adminBarContainer}>
 					<Divider plain>Панель навигации</Divider>

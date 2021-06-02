@@ -10,10 +10,11 @@ export function addTeacher(data) {
 	return async function (dispatch) {
 		dispatch({ type: ADMIN_REQUEST });
 		const response = await AddTeacher(data);
+		const teacherData = response?.data;
 		console.log(response);
 		try {
 			response
-				? dispatch({ type: ADD_TEACHER, payload: response })
+				? dispatch({ type: ADD_TEACHER, payload: teacherData })
 				: console.log('Ответ пустой');
 		} catch {
 			dispatch({ type: ADMIN_REQUEST_FAILED });
