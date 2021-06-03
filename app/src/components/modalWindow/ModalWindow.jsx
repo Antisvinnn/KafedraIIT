@@ -5,7 +5,7 @@ import { Input, Modal, Upload, message, Button } from 'antd';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTeacher as AddTeacher } from '@redux/actions/admin';
+import { addTeacher as AddTeacher, removeTeacher } from '@redux/actions/admin';
 
 const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 	const dispatch = useDispatch();
@@ -112,6 +112,17 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 		const arrayOfStuff = stuff.map((element) => <div>{element.name}</div>);
 		return arrayOfStuff;
 	};
+	const getStuffToRemove = () => {
+		const arrayOfStuff = stuff.map((element) => (
+			<div
+				className={style.dangerStuffItem}
+				onClick={() => dispatch(removeTeacher(element.id))}
+			>
+				{element.name}
+			</div>
+		));
+		return arrayOfStuff;
+	};
 	const getAllstuffAction = () => {
 		return (
 			<Modal
@@ -144,11 +155,45 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 			</Modal>
 		);
 	};
+	const removeTeacherAction = () => {
+		return (
+			<Modal
+				centered
+				title='Список преподавателей'
+				visible={visible}
+				onCancel={() => setVisible(false)}
+				closable={false}
+				footer={false}
+				onOk={handleOk}
+			>
+				<>
+					{getStuffToRemove()}
+					<Button
+						htmlType='submit'
+						className={style.buttonStuff}
+						type='primary'
+						onClick={handleOk}
+					>
+						ОК
+					</Button>
+					<Button
+						onClick={() => setVisible(false)}
+						className={style.buttonStuff}
+						type='default'
+					>
+						Отменить
+					</Button>
+				</>
+			</Modal>
+		);
+	};
 	const actionRenderer = () => {
 		if (action == 'getAllStuff') {
 			return getAllstuffAction();
 		} else if (action == 'addTeacher') {
 			return addTeacherAction();
+		} else if (action == 'removeTeacher') {
+			return removeTeacherAction();
 		} else {
 			return null;
 		}

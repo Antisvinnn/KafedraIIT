@@ -72,8 +72,8 @@ const TeacherPage = () => {
 						<Button
 							onClick={() => {
 								setVisible(true);
-								setAction('getAllStuff');
 								dispatch(getAllStuff());
+								setAction('getAllStuff');
 							}}
 							className={style.adminBtn}
 						>
@@ -85,7 +85,16 @@ const TeacherPage = () => {
 						<Button disabled className={style.adminBtn}>
 							Просмотреть публикации
 						</Button>
-						<Button danger type='primary' className={style.adminBtn + ' ' + style.last}>
+						<Button
+							danger
+							onClick={() => {
+								setVisible(true);
+								dispatch(getAllStuff());
+								setAction('removeTeacher');
+							}}
+							type='primary'
+							className={style.adminBtn + ' ' + style.last}
+						>
 							Удалить преподавателя
 						</Button>
 					</div>

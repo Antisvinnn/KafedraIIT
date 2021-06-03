@@ -22,3 +22,16 @@ export function addTeacher(data) {
 		}
 	};
 }
+
+export function removeTeacher(id) {
+	return async function (dispatch) {
+		dispatch({ type: ADMIN_REQUEST });
+		const response = RemoveTeacher(id);
+		console.log(response);
+		try {
+			response ? dispatch({ type: REMOVE_TEACHER }) : console.log('Answer is clean');
+		} catch {
+			dispatch({ type: ADMIN_REQUEST_FAILED });
+		}
+	};
+}
