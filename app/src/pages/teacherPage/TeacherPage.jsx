@@ -171,6 +171,14 @@ const TeacherPage = () => {
 
 				<Divider plain>Публикации преподавателя</Divider>
 				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+				<p>123</p>
+
 				<ModalWindow visible={visible} setVisible={setVisible} action={action} />
 			</div>
 			<Footer />

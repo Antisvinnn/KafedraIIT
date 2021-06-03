@@ -3,7 +3,14 @@ import style from './style.module.scss';
 
 const Slider = () => {
 	return (
-		<Carousel pauseOnDotsHover pauseOnHover pauseOnFocus autoplay className={style.slider}>
+		<Carousel
+			autoplaySpeed={6000}
+			pauseOnDotsHover
+			pauseOnHover
+			pauseOnFocus
+			autoplay
+			className={style.slider}
+		>
 			<div className={style.slide1}>
 				<h1 className={style.silde1Text}>
 					Кафедра Интеллектуальных Информационных Технологий

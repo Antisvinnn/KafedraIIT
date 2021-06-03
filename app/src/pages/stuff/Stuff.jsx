@@ -64,12 +64,12 @@ const Stuff = () => {
 							{showAllStuff()}
 						</section>
 					</div>
-					<Footer className={style.footer} />
 					<BackTop className={style.backTop}>
 						<img style={styleBackTop} src={arrow} alt='img' />
 					</BackTop>
 				</div>
 			)}
+			<Footer />
 		</React.Fragment>
 	);
 };
