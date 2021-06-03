@@ -10,6 +10,7 @@ import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import ModalWindow from '@components/modalWindow/ModalWindow';
 import style from './style.module.scss';
+import Footer from '../../components/footer/Footer';
 
 const TeacherPage = () => {
 	const { id } = useParams();
@@ -146,31 +147,34 @@ const TeacherPage = () => {
 	};
 
 	return (
-		<div className={style.main}>
-			<PageHeader
-				className={style.sitePageHeader}
-				onBack={() => history.goBack()} //useHistory => hook
-				title='Личный профиль преподавателя'
-				breadcrumb={{ routes, itemRender }}
-				subTitle='This is a subtitle'
-			/>
-			<div className={style.container}>
-				<div className={style.teacherDataContainer}>
-					<img className={style.image} src={response.photo} alt='' />
-					<div className={style.teacherDescription}>
-						<span className={style.name}>{response.name}</span>
-						<span className={style.rewards}>{response.description}</span>
-						<Divider />
-						<span className={style.contacts}>Контакты: {response.contacts}</span>
+		<>
+			<div className={style.main}>
+				<PageHeader
+					className={style.sitePageHeader}
+					onBack={() => history.goBack()} //useHistory => hook
+					title='Личный профиль преподавателя'
+					breadcrumb={{ routes, itemRender }}
+					subTitle='This is a subtitle'
+				/>
+				<div className={style.container}>
+					<div className={style.teacherDataContainer}>
+						<img className={style.image} src={response.photo} alt='' />
+						<div className={style.teacherDescription}>
+							<span className={style.name}>{response.name}</span>
+							<span className={style.rewards}>{response.description}</span>
+							<Divider />
+							<span className={style.contacts}>Контакты: {response.contacts}</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			{isLoading ? null : <React.Fragment>{roleRenderer()}</React.Fragment>}
+				{isLoading ? null : <React.Fragment>{roleRenderer()}</React.Fragment>}
 
-			<Divider plain>Публикации преподавателя</Divider>
-			<p>123</p>
-			<ModalWindow visible={visible} setVisible={setVisible} action={action} />
-		</div>
+				<Divider plain>Публикации преподавателя</Divider>
+				<p>123</p>
+				<ModalWindow visible={visible} setVisible={setVisible} action={action} />
+			</div>
+			<Footer />
+		</>
 	);
 };
 

@@ -6,6 +6,7 @@ import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTeacher as AddTeacher, removeTeacher } from '@redux/actions/admin';
+import { getAllStuff } from '../../redux/actions/publick';
 
 const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 	const dispatch = useDispatch();
@@ -39,7 +40,6 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 		return false;
 	};
 	const addTeacher = (values) => {
-		console.log(values);
 		encodeImageFileAsURL(values.photo, values);
 	};
 	const onPreview = async (file) => {
@@ -49,7 +49,6 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 				const reader = new FileReader();
 				reader.readAsDataURL(file.originFileObj);
 				reader.onload = () => resolve(reader.result);
-				console.log(reader.result);
 			});
 		}
 		const image = new Image();
@@ -105,6 +104,7 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 						Отменить
 					</Button>
 				</Form>
+				``
 			</Modal>
 		);
 	};
@@ -116,7 +116,10 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 		const arrayOfStuff = stuff.map((element) => (
 			<div
 				className={style.dangerStuffItem}
-				onClick={() => dispatch(removeTeacher(element.id))}
+				onClick={() => {
+					dispatch(removeTeacher(element.id));
+					setVisible(false);
+				}}
 			>
 				{element.name}
 			</div>

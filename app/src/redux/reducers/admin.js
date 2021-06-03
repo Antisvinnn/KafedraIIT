@@ -30,6 +30,7 @@ const adminReducer = (state = initialState, action) => {
 		case REMOVE_TEACHER:
 			newState.isLoading = false;
 			newState.deletedTeachers = action.payload;
+			message.success('Преподаватель удалён!');
 			return newState;
 		default:
 			return state;
