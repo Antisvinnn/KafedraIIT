@@ -46,11 +46,13 @@ const Main = () => {
 		});
 	};
 	useEffect(() => {
-		if (role == 'admin') {
-			openAdminNotification('topRight');
-		} else if (role == 'user') {
-			openUserNotification();
-		}
+		setTimeout(() => {
+			if (role === 'admin') {
+				openAdminNotification('topRight');
+			} else if (role === 'user') {
+				openUserNotification('topRight');
+			}
+		}, 500);
 	}, []);
 	return (
 		<div className={style.main}>
