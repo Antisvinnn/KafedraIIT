@@ -5,6 +5,7 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
 import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { getAllStuff } from '../../redux/actions/publick';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import ModalWindow from '@components/modalWindow/ModalWindow';
@@ -16,12 +17,13 @@ const TeacherPage = () => {
 	let dispatch = useDispatch();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => dispatch(getOnlyTeacher(id)), []);
+	const [visible, setVisible] = useState(false);
+	const [action, setAction] = useState();
 	const response = useSelector((store) => store.publick.onlyTeacher);
 	const isLoading = useSelector((store) => store.publick.isDataLoading);
 	const userRole = useSelector((store) => store.user?.authData?.role);
 	const userID = useSelector((store) => store.user?.authData?.id);
 	// const [action, setAction] = useState();
-	const [visible, setVisible] = useState(false);
 	const roleRenderer = () => {
 		if (userRole === 'user' && id == userID) {
 			return (
@@ -57,10 +59,26 @@ const TeacherPage = () => {
 				<div className={style.adminBarContainer}>
 					<Divider plain>Панель навигации</Divider>
 					<div className={style.adminBar}>
-						<Button onClick={() => setVisible(true)} className={style.adminBtn} type='primary'>
+						<Button
+							onClick={() => {
+								setVisible(true);
+								setAction('addTeacher');
+							}}
+							className={style.adminBtn}
+							type='primary'
+						>
 							Добавить преподавателя
 						</Button>
-						<Button className={style.adminBtn}>Просмотреть преподавателей</Button>
+						<Button
+							onClick={() => {
+								setVisible(true);
+								setAction('getAllStuff');
+								dispatch(getAllStuff());
+							}}
+							className={style.adminBtn}
+						>
+							Просмотреть преподавателей
+						</Button>
 						<Button disabled className={style.adminBtn}>
 							Просмотреть новости
 						</Button>
@@ -142,7 +160,7 @@ const TeacherPage = () => {
 
 			<Divider plain>Публикации преподавателя</Divider>
 			<p>123</p>
-			<ModalWindow visible={visible} setVisible={setVisible} />
+			<ModalWindow visible={visible} setVisible={setVisible} action={action} />
 		</div>
 	);
 };

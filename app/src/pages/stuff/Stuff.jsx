@@ -2,7 +2,6 @@ import StuffItem from '@components/stuffItem/StuffItem';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllStuff } from '@redux/actions/publick';
-import ava from '@assets/images/dark3.jpg';
 import arrow from '@assets/images/arrow.png';
 import { BackTop, Spin } from 'antd';
 
