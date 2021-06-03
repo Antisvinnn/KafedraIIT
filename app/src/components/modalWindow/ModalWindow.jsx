@@ -6,7 +6,6 @@ import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTeacher as AddTeacher, removeTeacher } from '@redux/actions/admin';
-import { getAllStuff } from '../../redux/actions/publick';
 
 const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 	const dispatch = useDispatch();

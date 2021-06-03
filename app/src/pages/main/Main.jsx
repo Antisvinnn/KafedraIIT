@@ -15,7 +15,8 @@ import bstu from '@assets/images/bstu.jpg';
 import arrow from '@assets/images/arrow.png';
 
 import style from './style.module.scss';
-import { Button, BackTop } from 'antd';
+import { Button, BackTop, notification } from 'antd';
+import { useSelector } from 'react-redux';
 
 const Main = () => {
 	const styleBackTop = {
@@ -24,6 +25,28 @@ const Main = () => {
 		lineHeight: '40px',
 		bottom: '-40px',
 	};
+	const role = useSelector((store) => store.user.authData?.role);
+	const openAdminNotification = (placement) => {
+		notification.info({
+			message: `Полезная информация`,
+			description:
+				'Вы - администратор приложения! Ваша задача контролировать весь процесс его работы! Вы имеете право добавлять и удалять преподавателей из базы данных, а также просматривать новости (ещё в разработке) и публикации (ещё в разработке)',
+			placement,
+		});
+	};
+	const openUserNotification = (placement) => {
+		notification.info({
+			message: `Полезная информация`,
+			description:
+				'Вы - преподаватель! Ваша задача помагать студентам :) . Вы имеете право опубликовывать информацию на странице своего профиля (например: файлы word, excel, .rar, и т.д.), для того, чтобы студенты могли удобно их скачать.',
+			placement,
+		});
+	};
+	if (role == 'admin') {
+		openAdminNotification('topRight');
+	} else if (role == 'user') {
+		openUserNotification();
+	}
 	return (
 		<div className={style.main}>
 			<Slider />
