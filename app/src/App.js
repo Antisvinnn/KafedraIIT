@@ -7,6 +7,7 @@ import MainPage from '@pages/main/Main';
 import Stuff from '@pages/stuff/Stuff';
 import TeacherPage from '@pages/teacherPage/TeacherPage';
 import LoginPage from '@pages/login/LoginPage';
+import ProfilePage from '@pages/profilePage/TeacherPage';
 import Page404 from '@pages/page404/Page404';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -29,6 +30,7 @@ const App = () => {
 				<Switch>
 					<Route exact path='/' component={MainPage} />
 					<Route path='/stuff/:id' component={TeacherPage} />
+					<Route exact path='/profile/:id' component={ProfilePage} />
 					<Route exact path='/stuff' component={Stuff} />
 					<Route exact path='/login' component={LoginPage} />
 					<Route exact path='*' component={Page404} />

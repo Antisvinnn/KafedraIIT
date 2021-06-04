@@ -41,7 +41,7 @@ const Header = () => {
 					{accessToken ? (
 						<Dropdown overlay={menu} placement='topCenter'>
 							<Link
-								to={`/stuff/${teacherID}`}
+								to={`/profile/${teacherID}`}
 								className={style.navLink + ' ' + style.navLinkTeachers}
 								// onClick={(e) => e.preventDefault()}
 							>

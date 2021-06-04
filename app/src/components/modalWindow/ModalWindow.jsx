@@ -161,7 +161,7 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 		return (
 			<Modal
 				centered
-				title='Список преподавателей'
+				title='Чтобы удалить преподавателя, нажмите на него!'
 				visible={visible}
 				onCancel={() => setVisible(false)}
 				closable={false}

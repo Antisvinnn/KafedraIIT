@@ -1,4 +1,8 @@
-import { login as Login, logout as Logout } from '@redux/services/AuthService';
+import {
+	login as Login,
+	logout as Logout,
+	refresh as Refresh,
+} from '@redux/services/AuthService';
 import {
 	AUTH_LOGIN_REQUEST,
 	AUTH_LOGIN_SUCCESS,
@@ -6,6 +10,9 @@ import {
 	AUTH_LOGOUT_REQUEST,
 	AUTH_LOGOUT_SUCCESS,
 	AUTH_LOGOUT_FAILED,
+	AUTH_REFRESH_REQUEST,
+	AUTH_REFRESH_SUCCESS,
+	AUTH_REFRESH_FAILED,
 } from '@redux/actionsTypes/auth';
 import { whoAmI } from './users';
 import axios from 'axios';
@@ -48,6 +55,20 @@ export const logout = () => {
 			localStorage.removeItem('expires_in');
 			dispatch({ type: AUTH_LOGOUT_FAILED, payload: 'Что-то пошло не так' });
 			return Promise.reject('Что-то пошло не так');
+		}
+	};
+};
+
+export const refresh = () => {
+	return async function (dispatch) {
+		dispatch({ type: AUTH_REFRESH_REQUEST });
+		const refreshToken = localStorage.getItem('refreshToken');
+		const response = await Refresh(refreshToken);
+		console.log(response);
+		try {
+			dispatch({ type: AUTH_REFRESH_SUCCESS, payload: response });
+		} catch {
+			dispatch({ type: AUTH_REFRESH_FAILED });
 		}
 	};
 };

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { refresh } from '../redux/actions/auth';
+import { refresh } from '@redux/actions/auth';
 
-const Interceptors = (dispatch) => {
+export const Interceptors = (dispatch) => {
 	axios.interceptors.response.use(
 		(response) => {
 			return response;
@@ -13,5 +13,3 @@ const Interceptors = (dispatch) => {
 		}
 	);
 };
-
-export default Interceptors;
