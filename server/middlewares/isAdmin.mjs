@@ -8,7 +8,6 @@ const isAdmin = (req, res, next) => {
       message: "Token is not valid!",
     });
   else if (req.user.role !== "admin") {
-    console.log(req.user.role);
     res.status(400).json({
       message: "Required admins permissions!",
     });
