@@ -7,10 +7,9 @@ export const Interceptors = (dispatch) => {
       return response;
     },
     (error) => {
-      console.log(error.response);
       if (error.response?.status === 401) {
         dispatch(refresh());
-      } else {
+      } else if (error.response?.status !== 405) {
         dispatch(logout());
       }
     }

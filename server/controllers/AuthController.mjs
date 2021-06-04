@@ -22,7 +22,7 @@ async function login(req, res) {
     res.status(200).json(data[1]);
   } catch (error) {
     logger.error(error);
-    res.status(400).json(error.message);
+    res.status(405).json(error.message);
   }
 }
 

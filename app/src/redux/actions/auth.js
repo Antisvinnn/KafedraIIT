@@ -70,7 +70,6 @@ export const refresh = () => {
     try {
       const refreshToken = localStorage.getItem("refreshToken");
       const { data } = await Refresh(refreshToken);
-      console.log(data);
       localStorage.setItem("accessToken", data.accessToken);
       localStorage.setItem("refreshToken", data.refreshToken);
       localStorage.setItem("expires_in", data.expires_in);
@@ -80,6 +79,7 @@ export const refresh = () => {
       return Promise.resolve();
     } catch {
       dispatch({ type: AUTH_REFRESH_FAILED });
+      dispatch(logout());
     }
   };
 };
