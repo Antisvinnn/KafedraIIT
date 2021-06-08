@@ -14,8 +14,8 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 		setVisible(false);
 	};
 	const encodeImageFileAsURL = (element, values) => {
-		var file = element.file;
-		var reader = new FileReader();
+		let file = element.file;
+		let reader = new FileReader();
 		reader.onloadend = function () {
 			const objectToSend = { ...values };
 			objectToSend.photo = reader.result;
