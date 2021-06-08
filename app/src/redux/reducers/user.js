@@ -1,7 +1,9 @@
+import { message } from 'antd';
 import {
 	WHO_AM_I_REQUEST,
 	WHO_AM_I_SUCCESS,
 	WHO_AM_I_FAILED,
+	CLEAR_AUTH_DATA,
 	POST_TEACHER_POSTS,
 } from '../actionsTypes/user';
 
@@ -23,6 +25,11 @@ const userReducer = (state = initialState, action) => {
 			return newState;
 		case WHO_AM_I_FAILED:
 			newState.isProfileLoading = false;
+			return newState;
+		case CLEAR_AUTH_DATA:
+			newState.isProfileLoading = false;
+			message.info('authData was cleared!');
+			newState.authData = null;
 			return newState;
 		case POST_TEACHER_POSTS:
 			newState.isProfileLoading = false;

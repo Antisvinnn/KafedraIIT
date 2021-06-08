@@ -2,4 +2,6 @@ export const WHO_AM_I_REQUEST = 'WHO_AM_I_REQUEST';
 export const WHO_AM_I_SUCCESS = 'WHO_AM_I_SUCCESS';
 export const WHO_AM_I_FAILED = 'WHO_AM_I_FAILED';
 
+export const CLEAR_AUTH_DATA = 'CLEAR_AUTH_DATA';
+
 export const POST_TEACHER_POSTS = 'POST_TEACHER_POSTS';
