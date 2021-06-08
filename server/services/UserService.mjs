@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
 import Users from "../db/models/Users.mjs";
-
+import logger from "../logs/pino.mjs";
 const Op = Sequelize.Op;
 
 export const get = (id) => {
@@ -87,16 +87,17 @@ export const change = (data, id) => {
 
 export const addPost = async (post, id) => {
   // MUST HAVE OPTIMIZATION
-  if (!post.input) throw new Error("Incorrect input!");
-  const posts = await Users.findOne({
+  if (!post) throw new Error("Incorrect input!");
+  let posts = await Users.findOne({
     attributes: ["posts"],
     where: { id },
   });
-  posts ??= [];
-  const numberOfPost = posts[posts.length - 1].id + 1 ?? 1;
+  posts = posts.posts ?? [];
+  let numberOfPost = posts[posts.length - 1]?.id + 1;
+  if (isNaN(numberOfPost)) numberOfPost = 1;
   posts.push({
-    upload: post?.upload,
-    input: post.input,
+    files: post?.files,
+    text: post.text,
     id: numberOfPost,
   });
   return Users.update(
