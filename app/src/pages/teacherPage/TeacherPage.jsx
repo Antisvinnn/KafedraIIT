@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
-import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
+import { PageHeader, Divider, Input, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { getAllStuff } from '../../redux/actions/publick';
+import { getAllStuff } from '@redux/actions/publick';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import ModalWindow from '@components/modalWindow/ModalWindow';
 import style from './style.module.scss';
-import Footer from '../../components/footer/Footer';
+import Footer from '@components/footer/Footer';
 
 const TeacherPage = () => {
 	const { id } = useParams();
@@ -28,7 +28,7 @@ const TeacherPage = () => {
 	const roleRenderer = () => {
 		if (userRole === 'user' && id == userID) {
 			return (
-				<Form className={style.form} onFinish={getInfo}>
+				<Form className={style.form}>
 					<Divider plain>Панель навигации</Divider>
 					<FormItem name='input' className={style.input}>
 						<Input placeholder='Добавьте описание'></Input>
@@ -139,12 +139,6 @@ const TeacherPage = () => {
 		}, 0);
 	};
 	// console.log(process.env.NODE_ENV);  !!!!!!!!!!!!!!!
-	let getInfo = (values) => {
-		console.log(values);
-		if (values.input && values.upload !== undefined) {
-			message.success('Файлы и описание приняты!');
-		}
-	};
 
 	return (
 		<>

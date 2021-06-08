@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
-import { PageHeader, Divider, Input, Upload, Button, message } from 'antd';
+import { PageHeader, Divider, Input, Upload, Button } from 'antd';
+import { UploadTeacherPosts } from '@redux/actions/users';
 import { UploadOutlined } from '@ant-design/icons';
 import { getAllStuff } from '../../redux/actions/publick';
 import Form from 'antd/lib/form/Form';
@@ -30,7 +31,7 @@ const TeacherPage = () => {
 			return (
 				<Form className={style.form} onFinish={getInfo}>
 					<Divider plain>Панель навигации</Divider>
-					<FormItem name='input' className={style.input}>
+					<FormItem name='text' className={style.input}>
 						<Input placeholder='Добавьте описание'></Input>
 					</FormItem>
 					<div className={style.underInput}>
@@ -39,7 +40,7 @@ const TeacherPage = () => {
 								Отправить
 							</Button>
 						</FormItem>
-						<FormItem name='upload'>
+						<FormItem name='files'>
 							<Upload
 								{...config}
 								className={style.upload}
@@ -140,9 +141,15 @@ const TeacherPage = () => {
 	};
 	// console.log(process.env.NODE_ENV);  !!!!!!!!!!!!!!!
 	let getInfo = (values) => {
-		console.log(values);
-		if (values.input && values.upload !== undefined) {
-			message.success('Файлы и описание приняты!');
+		if (values.text && values.files !== undefined) {
+			const objectToSend = { ...values };
+			// objectToSend.id = userID;
+			objectToSend.files = values.files.fileList;
+			console.log(objectToSend);
+			const arrayToSend = [];
+			arrayToSend.push(objectToSend);
+			console.log(arrayToSend);
+			dispatch(UploadTeacherPosts(arrayToSend));
 		}
 	};
 
