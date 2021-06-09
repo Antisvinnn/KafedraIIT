@@ -1,3 +1,8 @@
+$mainBlueColor: #2091ff;
+$addBlueColor: #0a59a6;
+$mainOrangeColor: #ff5c0e;
+$addOrangeColor: #a63905;
+
 .input {
 	margin-bottom: 20px;
 }
@@ -25,6 +30,16 @@
 .buttonStuff {
 	margin-top: 10px;
 	margin-right: 10px;
+}
+
+.stuffItem {
+	font-size: 16px;
+	line-height: 2.5;
+}
+
+.dangerStuffItem {
+	font-size: 16px;
+	line-height: 2.5;
 }
 
 .dangerStuffItem:hover {

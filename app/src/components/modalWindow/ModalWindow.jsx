@@ -108,7 +108,9 @@ const ModalWindow = ({ visible = false, setVisible = () => {}, action }) => {
 		);
 	};
 	const getStuff = () => {
-		const arrayOfStuff = stuff.map((element) => <div>{element.name}</div>);
+		const arrayOfStuff = stuff.map((element) => (
+			<div className={style.stuffItem}>{element.name}</div>
+		));
 		return arrayOfStuff;
 	};
 	const getStuffToRemove = () => {

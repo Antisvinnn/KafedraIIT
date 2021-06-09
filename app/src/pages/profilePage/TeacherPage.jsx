@@ -172,14 +172,18 @@ const TeacherPage = () => {
 				{isLoading ? null : <React.Fragment>{roleRenderer()}</React.Fragment>}
 
 				<Divider plain>Публикации преподавателя</Divider>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
-				<p>123</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
+				<p>something post</p>
 
 				<ModalWindow visible={visible} setVisible={setVisible} action={action} />
 			</div>
