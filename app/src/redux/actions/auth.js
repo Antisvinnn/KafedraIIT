@@ -1,4 +1,8 @@
-import { login as Login, logout as Logout } from '@redux/services/AuthService';
+import {
+	login as Login,
+	logout as Logout,
+	refresh as Refresh,
+} from '@redux/services/AuthService';
 import {
 	AUTH_LOGIN_REQUEST,
 	AUTH_LOGIN_SUCCESS,
@@ -6,7 +10,11 @@ import {
 	AUTH_LOGOUT_REQUEST,
 	AUTH_LOGOUT_SUCCESS,
 	AUTH_LOGOUT_FAILED,
+	AUTH_REFRESH_REQUEST,
+	AUTH_REFRESH_SUCCESS,
+	AUTH_REFRESH_FAILED,
 } from '@redux/actionsTypes/auth';
+import { CLEAR_AUTH_DATA } from '@redux/actionsTypes/user';
 import { whoAmI } from './users';
 import axios from 'axios';
 
@@ -14,15 +22,15 @@ export const login = (data) => {
 	return async function (dispatch) {
 		dispatch({ type: AUTH_LOGIN_REQUEST });
 		try {
-			const response = await Login(data);
+			const { data: jwt } = await Login(data);
 			dispatch({
 				type: AUTH_LOGIN_SUCCESS,
-				payload: response.data.accessToken,
+				payload: jwt.accessToken,
 			});
-			localStorage.setItem('accessToken', response.data.accessToken);
-			localStorage.setItem('refreshToken', response.data.refreshToken);
-			localStorage.setItem('expires_in', response.data.expires_in);
-			axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.accessToken;
+			localStorage.setItem('accessToken', jwt.accessToken);
+			localStorage.setItem('refreshToken', jwt.refreshToken);
+			localStorage.setItem('expires_in', jwt.expires_in);
+			axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwt.accessToken;
 			dispatch(whoAmI());
 		} catch (err) {
 			let message;
@@ -37,13 +45,14 @@ export const login = (data) => {
 export const logout = () => {
 	return async function (dispatch) {
 		dispatch({ type: AUTH_LOGOUT_REQUEST });
-		Logout(localStorage.getItem('refreshToken'));
 		try {
-			dispatch({ type: AUTH_LOGOUT_SUCCESS });
+			await Logout(localStorage.getItem('refreshToken'));
 			localStorage.removeItem('accessToken');
 			localStorage.removeItem('refreshToken');
 			localStorage.removeItem('expires_in');
 			axios.defaults.headers.common['Authorization'] = '';
+			dispatch({ type: AUTH_LOGOUT_SUCCESS });
+			dispatch({ type: CLEAR_AUTH_DATA });
 			return Promise.resolve();
 		} catch (err) {
 			localStorage.removeItem('accessToken');
@@ -51,6 +60,25 @@ export const logout = () => {
 			localStorage.removeItem('expires_in');
 			dispatch({ type: AUTH_LOGOUT_FAILED, payload: 'Что-то пошло не так' });
 			return Promise.reject('Что-то пошло не так');
+		}
+	};
+};
+
+export const refresh = () => {
+	return async function (dispatch) {
+		dispatch({ type: AUTH_REFRESH_REQUEST });
+		try {
+			const refreshToken = localStorage.getItem('refreshToken');
+			const { data } = await Refresh(refreshToken);
+			localStorage.setItem('accessToken', data.accessToken);
+			localStorage.setItem('refreshToken', data.refreshToken);
+			localStorage.setItem('expires_in', data.expires_in);
+			axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.accessToken;
+			dispatch({ type: AUTH_REFRESH_SUCCESS, payload: data.accessToken });
+			return Promise.resolve();
+		} catch {
+			dispatch({ type: AUTH_REFRESH_FAILED });
+			dispatch(logout());
 		}
 	};
 };

@@ -2,12 +2,12 @@ import StuffItem from '@components/stuffItem/StuffItem';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllStuff } from '@redux/actions/publick';
-import ava from '@assets/images/dark3.jpg';
 import arrow from '@assets/images/arrow.png';
 import { BackTop, Spin } from 'antd';
 
 import style from './style.module.scss';
 import React from 'react';
+import Footer from '../../components/footer/Footer';
 
 const Stuff = () => {
 	const styleBackTop = {
@@ -64,26 +64,12 @@ const Stuff = () => {
 							{showAllStuff()}
 						</section>
 					</div>
-					<footer className={style.footer}>
-						<div className={style.leftContent}>
-							<div className={style.leftContentText}>
-								©2021 Кафедра ИИТ. Все права защищены. <br />
-								Email: iit@bstu.by
-								<br />
-								Контактный номер: 8 (0132) 2-56-11
-							</div>
-						</div>
-						<div className={style.rightContent}>
-							<div className={style.rightContentText}>
-								Разработка и дизайн сайта - Точёный Виталий
-							</div>
-						</div>
-					</footer>
 					<BackTop className={style.backTop}>
 						<img style={styleBackTop} src={arrow} alt='img' />
 					</BackTop>
 				</div>
 			)}
+			<Footer />
 		</React.Fragment>
 	);
 };

@@ -1,0 +1,27 @@
+$mainBlueColor: #2091ff;
+$addBlueColor: #0a59a6;
+$mainOrangeColor: #ff5c0e;
+$addOrangeColor: #a63905;
+
+.footer {
+	width: 100%;
+	background-color: black;
+	color: $mainBlueColor;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 170px;
+	padding: 20px;
+	// position: absolute;
+	// bottom: 0;
+}
+
+.leftContentText {
+	padding-top: 15px;
+	border-top: 1px solid $mainOrangeColor;
+}
+
+.rightContentText {
+	padding-top: 15px;
+	border-top: 1px solid $mainOrangeColor;
+}

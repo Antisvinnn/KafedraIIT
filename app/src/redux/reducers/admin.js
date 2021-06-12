@@ -3,8 +3,7 @@ import {
 	ADD_TEACHER,
 	REMOVE_TEACHER,
 	ADMIN_REQUEST,
-	// ADMIN_REQUEST_SUCCESS,
-	// ADMIN_REQUEST_FAILED,
+	ADMIN_REQUEST_FAILED,
 } from '../actionsTypes/admin';
 
 const initialState = {
@@ -20,13 +19,18 @@ const adminReducer = (state = initialState, action) => {
 		case ADMIN_REQUEST:
 			newState.isLoading = true;
 			return newState;
+		case ADMIN_REQUEST_FAILED:
+			message.error('Что-то пошло не так!');
+			return state;
 		case ADD_TEACHER:
 			newState.isLoading = false;
 			newState.addedTeachers = action.payload;
+			message.success('Преподаватель добавлен!');
 			return newState;
 		case REMOVE_TEACHER:
 			newState.isLoading = false;
 			newState.deletedTeachers = action.payload;
+			message.success('Преподаватель удалён!');
 			return newState;
 		default:
 			return state;

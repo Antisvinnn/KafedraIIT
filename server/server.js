@@ -1,7 +1,8 @@
+import dotenv from "dotenv";
+import photo from "./constants/adminPhoto.json";
 import sequelize from "./db/config/connect.mjs";
 import { create } from "./services/UserService.mjs";
 import app from "./app.mjs";
-import dotenv from "dotenv";
 import logger from "./logs/pino.mjs";
 
 dotenv.config();
@@ -20,6 +21,7 @@ try {
   logger.info("Connection has been established successfully");
   create({
     name: "Admin",
+    photo: photo.photo,
     description: "admin",
     login: "admin",
     role: "admin",

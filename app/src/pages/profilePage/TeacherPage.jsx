@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { getOnlyTeacher } from '@redux/actions/publick';
 import { PageHeader, Divider, Input, Upload, Button } from 'antd';
+import { UploadTeacherPosts } from '@redux/actions/users';
 import { UploadOutlined } from '@ant-design/icons';
-import { getAllStuff } from '@redux/actions/publick';
+import { getAllStuff } from '../../redux/actions/publick';
 import Form from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import ModalWindow from '@components/modalWindow/ModalWindow';
 import style from './style.module.scss';
-import Footer from '@components/footer/Footer';
+import Footer from '../../components/footer/Footer';
 
 const TeacherPage = () => {
 	const { id } = useParams();
@@ -28,9 +29,9 @@ const TeacherPage = () => {
 	const roleRenderer = () => {
 		if (userRole === 'user' && id == userID) {
 			return (
-				<Form className={style.form}>
+				<Form className={style.form} onFinish={getInfo}>
 					<Divider plain>Панель навигации</Divider>
-					<FormItem name='input' className={style.input}>
+					<FormItem name='text' className={style.input}>
 						<Input placeholder='Добавьте описание'></Input>
 					</FormItem>
 					<div className={style.underInput}>
@@ -39,7 +40,7 @@ const TeacherPage = () => {
 								Отправить
 							</Button>
 						</FormItem>
-						<FormItem name='upload'>
+						<FormItem name='files'>
 							<Upload
 								{...config}
 								className={style.upload}
@@ -139,6 +140,13 @@ const TeacherPage = () => {
 		}, 0);
 	};
 	// console.log(process.env.NODE_ENV);  !!!!!!!!!!!!!!!
+	let getInfo = (values) => {
+		if (values.text && values.files !== undefined) {
+			const objectToSend = { ...values };
+			objectToSend.files = values.files.fileList;
+			dispatch(UploadTeacherPosts(objectToSend));
+		}
+	};
 
 	return (
 		<>
@@ -152,7 +160,7 @@ const TeacherPage = () => {
 				/>
 				<div className={style.container}>
 					<div className={style.teacherDataContainer}>
-						<img className={style.image} src={response?.photo} alt='' />
+						<img className={style.image} src={response.photo} alt='' />
 						<div className={style.teacherDescription}>
 							<span className={style.name}>{response.name}</span>
 							<span className={style.rewards}>{response.description}</span>

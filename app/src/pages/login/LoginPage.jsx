@@ -1,6 +1,7 @@
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Footer from '../../components/footer/Footer';
 import { login } from '../../redux/actions/auth';
 import style from './style.module.scss';
 
@@ -10,44 +11,35 @@ const LoginPage = () => {
 		dispatch(login(values));
 	};
 	const accessToken = useSelector((store) => store.auth.accessToken);
-	console.log(accessToken);
-	if (accessToken) {
-		message.success('Вы авторизованы');
-	}
 	return (
-		<Form
-			onFinish={postData}
-			name='basic'
-			initialValues={{ remember: true }}
-			className={style.form}
-		>
-			{accessToken ? <Redirect to='/' /> : null}
-			<Form.Item
-				label='Логин'
-				name='login'
-				rules={[{ required: true, message: 'Please input your username!' }]}
+		<>
+			<Form
+				onFinish={postData}
+				name='basic'
+				initialValues={{ remember: true }}
+				className={style.form}
 			>
-				<Input />
-			</Form.Item>
-
-			<Form.Item
-				label='Пароль'
-				name='password'
-				rules={[{ required: true, message: 'Please input your password!' }]}
-			>
-				<Input.Password />
-			</Form.Item>
-
-			{/* <Form.Item name='remember' valuePropName='checked'>
-				<Checkbox>Remember me</Checkbox>
-			</Form.Item> */}
-
-			<Form.Item>
-				<Button type='primary' htmlType='submit'>
-					Войти
-				</Button>
-			</Form.Item>
-		</Form>
+				{accessToken ? <Redirect to='/' /> : null}
+				<Form.Item
+					name='login'
+					rules={[{ required: true, message: 'Пожалуйста, введите логин!' }]}
+				>
+					<Input placeholder='Введите логин' />
+				</Form.Item>
+				<Form.Item
+					name='password'
+					rules={[{ required: true, message: 'Пожалуйста, введите пароль!' }]}
+				>
+					<Input.Password placeholder='Введите пароль' />
+				</Form.Item>
+				<Form.Item>
+					<Button type='primary' htmlType='submit'>
+						Войти
+					</Button>
+				</Form.Item>
+			</Form>
+			<Footer />
+		</>
 	);
 };
 

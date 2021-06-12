@@ -22,7 +22,7 @@ async function login(req, res) {
     res.status(200).json(data[1]);
   } catch (error) {
     logger.error(error);
-    res.status(400).json(error.message);
+    res.status(405).json(error.message);
   }
 }
 
@@ -76,8 +76,8 @@ router.post("/logout", async (req, res) => {
     const { id } = await getInfo(req.body.token);
     const user = await get(id);
     if (!user) throw new Error("User not found");
-    user.tokens.filter((item) => item.token != req.body.token);
-    const data = await update({ tokens: data.tokens }, user.id);
+    user.tokens = user.tokens.filter((item) => item.token != req.body.token);
+    const data = await update({ tokens: user.tokens }, user.id);
     if (data[0] === 0) throw new Error("Token not removed");
     res.sendStatus(200);
   } catch (error) {
