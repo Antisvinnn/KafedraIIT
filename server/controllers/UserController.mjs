@@ -17,17 +17,19 @@ router.get("/me", async (req, res) => {
 router.put("/addPost", async (req, res) => {
   try {
     await addPost(req.body, req.user.id);
-    res.status(201);
+    res.sendStatus(201);
   } catch (error) {
     logger.error(error);
     res.status(500).send(error.message);
   }
 });
 
-router.put("/delPost", async (req, res) => {
+router.delete("/delPost", async (req, res) => {
   try {
-    await delPost(req.body, req.user.id);
-    res.status(201);
+    console.log(1);
+    await delPost(req.body.id, req.user.id);
+    console.log(2);
+    res.sendStatus(201);
   } catch (error) {
     logger.error(error);
     res.status(500).send(error.message);
