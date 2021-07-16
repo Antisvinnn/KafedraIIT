@@ -111,7 +111,7 @@ export const addPost = async (post, id) => {
 export const delPost = async (postID, id) => {
   // MUST HAVE OPTIMIZATION
   if (!postID) throw new Error("Incorrect post ID!");
-  const posts = await Users.findOne({
+  const { posts } = await Users.findOne({
     attributes: ["posts"],
     where: { id },
   });
