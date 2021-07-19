@@ -33,7 +33,6 @@ const authReducer = (state = initialState, action) => {
 			newState.message = action.payload;
 			newState.loading = false;
 			return newState;
-
 		case AUTH_LOGOUT_REQUEST:
 			newState.loading = true;
 			return newState;
@@ -52,7 +51,6 @@ const authReducer = (state = initialState, action) => {
 			return newState;
 		case AUTH_REFRESH_SUCCESS:
 			newState.accessToken = action.payload;
-			message.success('Рефреш токен прошёл успешно!');
 			newState.loading = false;
 			return newState;
 		case AUTH_REFRESH_FAILED:

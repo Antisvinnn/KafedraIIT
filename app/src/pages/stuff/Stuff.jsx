@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import StuffItem from '@components/stuffItem/StuffItem';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,12 +18,11 @@ const Stuff = () => {
 		bottom: '-40px',
 	};
 	const dispatch = useDispatch();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => dispatch(getAllStuff()), []);
 	const stuff = useSelector((store) => store.publick.stuff);
-	let testBool = useSelector((store) => store.publick.isDataLoading);
+	let loading = useSelector((store) => store.publick.isDataLoading);
 	let showAllStuff = function () {
-		let output = stuff.map((element) => (
+		let output = stuff?.map((element) => (
 			<StuffItem
 				id={element.id}
 				key={element.id}
@@ -35,7 +35,7 @@ const Stuff = () => {
 	};
 	return (
 		<React.Fragment>
-			{testBool ? (
+			{loading ? (
 				<Spin className={style.spin} size='large' />
 			) : (
 				<div className={style.main}>
