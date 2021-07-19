@@ -3,8 +3,8 @@ import {
 	REMOVE_TEACHER,
 	ADMIN_REQUEST,
 	ADMIN_REQUEST_FAILED,
-} from '@redux/actionsTypes/admin';
-import { AddTeacher, RemoveTeacher } from '@redux/services/AdminService';
+} from '../actionsTypes/admin';
+import { AddTeacher, RemoveTeacher } from '../services/AdminService';
 
 export function addTeacher(data) {
 	return async function (dispatch) {
@@ -26,9 +26,10 @@ export function removeTeacher(id) {
 	return async function (dispatch) {
 		dispatch({ type: ADMIN_REQUEST });
 		const response = RemoveTeacher(id);
-		console.log(response);
 		try {
-			response ? dispatch({ type: REMOVE_TEACHER }) : console.log('Answer is clean');
+			response
+				? dispatch({ type: REMOVE_TEACHER, payload: id })
+				: console.log('Answer is clean');
 		} catch {
 			dispatch({ type: ADMIN_REQUEST_FAILED });
 		}
